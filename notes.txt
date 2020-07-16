@@ -1,0 +1,13 @@
+##Tools
+{
+  "programs": ["Atom", "MySQL Workbench"],
+  "frameworks": [{
+      "name": "Node JS",
+      "packages": {
+        "dependencies": ["express", "mysql"],
+        "globalDependencies": ["nodemon"]
+      }
+    },
+  ],
+  "services": ["MySQL Server"]
+}
