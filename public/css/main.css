@@ -1,0 +1,156 @@
+:root {
+  --accent-color: #e85b4a; /*rgb(139,0,0) "darkred" //##3774ce*/
+  --light-color: #f5f5ed;
+  --dark-color: #4c3f49;
+}
+
+body {
+  background-color: var(--light-color);
+  padding-bottom: 10%;
+  overflow-x: hidden;
+}
+
+body, body * {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.header-container {
+  width: 100%;
+  height: 3rem;
+  background-color: rgb(44, 50, 58);
+  padding: 0 1rem;
+}
+
+.header-logo img {
+  width: 20%;
+  height: 100%;
+}
+
+.content {
+  padding: 1rem;
+}
+
+.content-hr {
+  margin: 1em;
+  border: 0.5px solid var(--accent-color);
+  border-radius: 10rem;
+}
+
+.post-section {
+  position: relative;
+  width: 100%;
+  height: 55vw;
+  overflow-y: auto;
+}
+
+.post-image {
+  float: left;
+  width: 60%;
+  height: 65%;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-heading {
+  display: block;
+  font-family: serif;
+  font-size: 1.5rem;
+  text-align: right;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.post-date {
+  display: block;
+  color: gray;
+  font-size: 0.6rem;
+  font-style: italic;
+  text-align: right;
+}
+
+.post-author-container {
+  display: block;
+  text-align: right;
+}
+
+.post-author-photo {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.25em;
+}
+
+.post-author-name {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.post-body {
+  color: gray;
+  font-size: 0.75rem;
+}
+
+.post-body-see-more-button {
+  color: var(--accent-color);
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.post-continue-reading-button {
+  display: inline-block;
+  position: absolute;
+  color: white;
+  background-color: var(--accent-color);
+  font-size: 0.8em;
+  padding: 0.4em 1em;
+  border-radius: 0.25em;
+  margin-top: 0.5em;
+  right: 0;
+  bottom: 0;
+}
+
+.post-body-more {
+  display: none;
+}
+
+.navbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc((100vw / 5) * 0.6);
+  background-color: var(--dark-color);
+  padding: 0.5rem;
+}
+
+.navbar-button {
+  display: inline-block;
+  text-align: center;
+  color: rgb(245,245,245);
+  width: 20%;
+  height: 100%;
+  font-size: 0.75rem;
+}
+
+.navbar-button.current {
+	background-color: var(--accent-color);
+}
+
+.navbar-icon, .navbar-name {
+  display: block;
+}
+
+.navbar-icon {
+  font-size: 1.2rem;
+}
+
+@media screen and (mix-width: 600px) {
+
+}
