@@ -1,0 +1,9 @@
+.menu-item {
+  display: block;
+  color: black;
+  background-color: lightgray;
+  font-size: 1.2em;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-bottom: 1px solid gray;
+}

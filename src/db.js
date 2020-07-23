@@ -1,10 +1,10 @@
 const mysql = require("mysql");
 
 //Create singleton database object
-const db = function() {
+const Database = function() {
   let connection;
 
-  const initConnection = function() {
+  const startConnection = function() {
     connection = mysql.createConnection({
       host: "localhost",
       user: "BasicApp",
@@ -12,37 +12,38 @@ const db = function() {
       database: "BasicApp",
       multipleStatements: true,
     });
-  };
 
-  const startConnection = function() {
     connection.connect((exception)=>{
       if (exception) {
-        console.log(exception);
+        throw exception;
       }
-      console.log("MySQL connected.");
+      console.log("Database connected.");
     });
   };
 
   const endConnection = function() {
     connection.end();
-    console.log("MySQL disconnected.")
+    console.log("Database disconnected.")
   };
 
-  const init = function() {
-    //Instantiate the database connection
-    initConnection();
+  //Initialize the database connection
+  this.init = function() {
+    //If we have already instantiated our database connection, skip
+    if (connection) {
+      return true;
+    }
 
-    //Start the database connection
+    //Instantiate the database connection
     startConnection();
   };
 
-  this.query = function(sql, callback) {
+  this.query = function(sql, callback, params) {
     //Query the database
-    connection.query(sql, (exception, results) => {
+    connection.query(sql, params, (exception, results) => {
       if (exception) {
         throw exception;
       }
-      console.log("Command completed successfully.");
+      //console.log("Command completed successfully.");
 
       //Return the results
       callback(results);
@@ -52,9 +53,6 @@ const db = function() {
   this.destroy = function() {
     endConnection();
   };
-
-  //Initialize the database connection
-  init();
 };
 
-module.exports = db;
+module.exports = new Database();

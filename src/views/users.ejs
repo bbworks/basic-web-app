@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="This is a user.">
+    <link type="image/ico" rel="icon" href="/assets/logo.png">
+    <title>App</title>
+
+    <!-- FONT AWESOME -->
+    <!-- NOTE: Import Font Awesome first, so we can override the formating of their icons -->
+    <script src="https://kit.fontawesome.com/4849833081.js" crossorigin="anonymous"></script>
+
+    <!-- STYLESHEETS -->
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/css/header.css">
+    <link type="text/css" rel="stylesheet" href="/css/footer.css">
+    <link type="text/css" rel="stylesheet" href="/css/user.css">
+  </head>
+  <body>
+    <%- include ("partials/header") %>
+    <main id="content" class="content">
+      <section class="user-section">
+      	<img class="user-photo" src="<%- user.user_photo_url %>" /
+        ><h3 class="user-name"><%- user.first_name+' '+user.last_name %></h3>
+      </section>
+      <div class="posts">
+        <h2 class="post-container-heading">Posts by Bradley</h2>
+        <div class="post-container">
+          <% posts.forEach(post=>{ %>
+            <section id="post-<%- post.post_id %>" class="post-section">
+              <span class="post-heading"><%- post.heading %></span
+              ><img class="post-image" src="<%- post.post_photo_url %>" /
+              ><div class="post-author-container">
+                <img class="post-author-photo" src="<%- user.user_photo_url %>" /
+                ><span class="post-author-name"><%- user.first_name+' '+user.last_name %></span>
+              </div
+              ><span class="post-date"><%- post.post_date %></span
+              ><p class="post-body"><%- post.body %></p
+              ><a class="post-continue-reading-button" href="/posts/<%- post.post_id %>">Continue Reading</a>
+            </section>
+            <% if (posts.indexOf(post) < posts.length-1) { %>
+              <hr class="post-hr" />
+            <% } %>
+          <% }); %>
+        </div>
+      </div>
+    </main>
+    <%- include ("partials/footer") %>
+  </body>
+  <script src="/js/currentPage.js"></script>
+</html>

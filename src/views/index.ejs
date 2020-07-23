@@ -5,10 +5,31 @@
   <body>
     <%- include ("partials/header") %>
     <main id="content" class="content">
-      <!-- This will be filled by Javascript -->
+      <section>
+        <form class="search-form" action="" method="GET">
+          <input class="search-input" name="search" type="text" placeholder="Search..." tabindex="1"/>
+          <button type="submit" class="search-button fas fa-search"></button>
+        </form>
+      </section>
+      <% posts.forEach(post=>{ %>
+        <section id="post-<%- post.post_id %>" class="post-section">
+          <span class="post-heading"><%- post.heading %></span
+          ><img class="post-image" src="<%- post.post_photo_url %>" /
+          ><div class="post-author-container">
+            <img class="post-author-photo" src="<%- post.user_photo_url %>" /
+            ><a class="post-author-name" href="/users/<%- post.author_id %>"><%- post.first_name+' '+post.last_name %></a>
+          </div
+          ><span class="post-date"><%- post.post_date %></span
+          ><p class="post-body"><%- post.body %></p
+          ><a class="post-continue-reading-button" href="/posts/<%- post.post_id %>">Continue Reading</a>
+        </section>
+        <% if (posts.indexOf(post) < posts.length-1) { %>
+          <hr class="content-hr" />
+        <% } %>
+      <% }); %>
     </main>
     <%- include ("partials/footer") %>
   </body>
-  <script src="/js/index.js"></script>
+  <!-- <script src="/js/index.js"></script> -->
   <script src="/js/currentPage.js"></script>
 </html>

@@ -1,0 +1,36 @@
+<% logInOut = (!user) ? {text:"Log In", href:"/login"} : {text:"Log Out", href:"/logout"}; %>
+<% menu = [logInOut]; %>
+<html>
+  <head>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="This is the menu.">
+    <link type="image/ico" rel="icon" href="/assets/logo.png">
+    <title>App</title>
+
+    <!-- FONT AWESOME -->
+    <!-- NOTE: Import Font Awesome first, so we can override the formating of their icons -->
+    <script src="https://kit.fontawesome.com/4849833081.js" crossorigin="anonymous"></script>
+
+    <!-- STYLESHEETS -->
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/css/header.css">
+    <link type="text/css" rel="stylesheet" href="/css/footer.css">
+    <link type="text/css" rel="stylesheet" href="/css/menu.css">
+  </head>
+  <body>
+    <%- include ("partials/header") %>
+    <main id="content" class="content">
+      <% for(let i in menu) { %>
+        <% const menuItem = menu[i]; %>
+        <div class="menu">
+          <a class="menu-item" href="<%- menuItem.href %>">
+            <span><%- menuItem.text %></span>
+          </a>
+        </div>
+      <% }; %>
+    </main>
+    <%- include ("partials/footer") %>
+  </body>
+  <script src="/js/currentPage.js"></script>
+</html>
