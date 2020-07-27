@@ -87,4 +87,17 @@ api.deletePost = (callback, postId) => {
   db.query(sql, callback, params);
 };
 
+//Get a specific post
+api.searchPosts = (callback, searchParams) => {
+  let sql = 'SELECT * FROM posts INNER JOIN users ON posts.author_id = users.user_id ';
+  let whereArray = [];
+  let whereClause = "WHERE ";
+  let query = "first_name LIKE ? OR last_name LIKE ? OR email_address LIKE ? OR phone_number LIKE ? OR post_date LIKE ? OR heading LIKE ? OR body LIKE ? OR author_id LIKE ?";
+  searchParams.split(" ").forEach(item=>{whereArray.push(query.replace(/\?/g, `'%${item}%'`));});
+  whereClause += whereArray.join(" OR ") + ";";
+  sql += whereClause;
+
+  db.query(sql, callback);
+};
+
 module.exports = api;

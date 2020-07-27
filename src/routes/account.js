@@ -14,7 +14,6 @@ router.get("/", authentication.checkAuthentication, (request, response) => {
 router.post("/", authentication.checkAuthentication, (request, response) => {
   const callback = (results) => {
     const user = results[1][0];
-    console.log(results);
     authentication.setSessionInformation(request, response, user);
     response.redirect("/account");
   };

@@ -3,6 +3,14 @@ const router = require("express").Router();
 const api = require("../../api/post");
 
 
+//Search for posts
+router.get("/search", (request, response)=>{
+  const callback = (results) => {
+    response.send(results);
+  };
+  api.searchPosts(callback, request.query.search);
+});
+
 //Get all posts
 router.get("/", (request, response)=>{
   const callback = (results) => {
