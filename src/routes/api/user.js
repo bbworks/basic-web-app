@@ -1,6 +1,5 @@
 //Import modules
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const api = require("../../api/user");
 
 
@@ -26,6 +25,14 @@ router.post("/", (request, response)=>{
     response.send(results);
   };
   api.createUser(callback, request.body.username, request.body.password, request.body.firstName, request.body.lastName, request.body.emailAddress, request.body.phoneNumber);
+});
+
+//Update a specific user
+router.put("/:user_id", (request, response)=>{
+  const callback = (results) => {
+    response.send(results);
+  };
+  api.updateUser(callback, request.params.user_id, request.body.firstName, request.body.lastName, request.body.emailAddress, request.body.phoneNumber);
 });
 
 //Delete a specific user

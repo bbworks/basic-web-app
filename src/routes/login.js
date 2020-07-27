@@ -1,6 +1,5 @@
 //Import modules
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const authentication = require("../api/authentication");
 
 let failedAttempt = false;
@@ -20,12 +19,7 @@ router.post("/", (request, response)=>{
     //Otherwise, move forward with authentication
     else {
       const user = results[0];
-      request.session.user = {
-        userId: results[0].user_id,
-        firstName: results[0].first_name,
-        lastName: results[0].last_name,
-        photoUrl: results[0].user_photo_url,
-      };
+      authentication.setSessionInformation(request, response, user);
       response.redirect("/account");
       failedAttempt = false;
     }

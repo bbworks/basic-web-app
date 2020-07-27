@@ -1,6 +1,12 @@
 <html>
   <head>
-    <%- include ("partials/head") %>
+    <%- include ("partials/head", {
+      meta: {
+        title: "App | Stuff",
+        description: "This is my app.",
+        cssSheetName: "stuff"
+      },
+    }) %>
   </head>
   <body>
     <%- include ("partials/header") %>

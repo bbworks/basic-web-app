@@ -21,4 +21,14 @@ api.checkAuthentication = (request, response, next) => {
   }
 };
 
+api.setSessionInformation = (request, response, user) => {
+  request.session.user = {
+    userId: user.user_id,
+    username: user.username,
+    firstName: user.first_name,
+    lastName: user.last_name,
+    photoUrl: user.user_photo_url,
+  };
+};
+
 module.exports = api;

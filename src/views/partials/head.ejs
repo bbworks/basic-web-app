@@ -2,9 +2,9 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="description" content="This is my app.">
+<meta name="description" content="<%- meta.description %>">
 <link type="image/ico" rel="icon" href="/assets/logo.png">
-<title>App</title>
+<title><%- meta.title %></title>
 
 <!-- FONT AWESOME -->
 <!-- NOTE: Import Font Awesome first, so we can override the formating of their icons -->
@@ -12,6 +12,6 @@
 
 <!-- STYLESHEETS -->
 <link type="text/css" rel="stylesheet" href="/css/main.css">
-<link type="text/css" rel="stylesheet" href="/css/index.css">
 <link type="text/css" rel="stylesheet" href="/css/header.css">
 <link type="text/css" rel="stylesheet" href="/css/footer.css">
+<link type="text/css" rel="stylesheet" href="/css/<%- meta.cssSheetName %>.css">

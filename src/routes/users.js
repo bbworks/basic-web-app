@@ -1,6 +1,5 @@
 //Import modules
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const userAPI = require("../api/user");
 const utilities = require("../utilities");
 
@@ -16,7 +15,7 @@ router.get("/:user_id", (request, response)=>{
         post.post_date = utilities.formatDateString(post.post_date);
       });
 
-      response.render("users.ejs", {user: user, posts: posts});
+      response.render("users.ejs", {user: user, posts: posts, sessionUser: request.session.user});
     }
     userAPI.getUserPosts(callback, request.params.user_id);
   };

@@ -1,6 +1,5 @@
 //Import modules
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const api = require("../../api/post");
 
 
@@ -26,6 +25,14 @@ router.post("/", (request, response)=>{
     response.send(results);
   };
   api.createPost(callback, request.body.postDate, request.body.heading, request.body.body, request.body.userId);
+});
+
+//Update a specific post
+router.put("/:post_id", (request, response)=>{
+  const callback = (results) => {
+    response.send(results);
+  };
+  api.updatePost(callback, request.params.post_id, request.body.heading, request.body.body);
 });
 
 //Delete a specific post

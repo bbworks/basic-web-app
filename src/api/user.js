@@ -23,28 +23,28 @@ api.getUser = (callback, userId) => {
 api.createUser = (callback, username, password, firstName, lastName, emailAddress, phoneNumber) => {
   const sql =
     'INSERT INTO users( \
-      username \
-      , password \
-      , first_name \
-      , last_name \
-      , email_address \
-      , phone_number \
-    ) \
-    VALUES ( \
-       ? \
-       , SHA1(?) \
-       , ? \
-       , ? \
-       , ? \
-       , ? \
-    ); \
-    SELECT \
-      * \
-    FROM users \
-    WHERE username = ? \
-      AND password = SHA1(?) \
-    ORDER BY 1 DESC \
-    LIMIT 1;';
+        username \
+        , password \
+        , first_name \
+        , last_name \
+        , email_address \
+        , phone_number \
+      ) \
+      VALUES ( \
+         ? \
+         , SHA1(?) \
+         , ? \
+         , ? \
+         , ? \
+         , ? \
+      ); \
+      SELECT \
+        * \
+      FROM users \
+      WHERE username = ? \
+        AND password = SHA1(?) \
+      ORDER BY 1 DESC \
+      LIMIT 1;';
   const params = [
     username,
     password,
@@ -54,6 +54,31 @@ api.createUser = (callback, username, password, firstName, lastName, emailAddres
     phoneNumber,
     username,
     password,
+  ];
+
+  db.query(sql, callback, params);
+};
+
+//Update a specific user
+api.updateUser = (callback, userId, firstName, lastName, emailAddress, phoneNumber) => {
+  const sql =
+  'UPDATE users \
+  SET first_name = ? \
+  , last_name = ? \
+  , email_address = ? \
+  , phone_number = ? \
+  WHERE user_id = ?; \
+  SELECT \
+  * \
+  FROM users \
+  WHERE user_id = ?;';
+  const params = [
+    firstName,
+    lastName,
+    emailAddress,
+    phoneNumber,
+    userId,
+    userId,
   ];
 
   db.query(sql, callback, params);

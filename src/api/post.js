@@ -22,28 +22,28 @@ api.getPost = (callback, postId) => {
 //Create a post
 api.createPost = (callback, postDate, heading, body, userId) => {
   const sql =
-  'INSERT INTO posts( \
-    post_date \
-    , heading \
-    , body \
-    , author_id \
-  ) \
-  VALUES ( \
-     ? \
-     , ? \
-     , ? \
-     , ? \
-  ); \
-  SELECT \
-    * \
-  FROM posts \
-  WHERE \
-    post_date = ? \
-    AND heading = ? \
-    AND body = ? \
-    AND author_id = ? \
-  ORDER BY 1 DESC \
-  LIMIT 1;';
+    'INSERT INTO posts( \
+        post_date \
+        , heading \
+        , body \
+        , author_id \
+      ) \
+      VALUES ( \
+         ? \
+         , ? \
+         , ? \
+         , ? \
+      ); \
+      SELECT \
+        * \
+      FROM posts \
+      WHERE \
+        post_date = ? \
+        AND heading = ? \
+        AND body = ? \
+        AND author_id = ? \
+      ORDER BY post_id DESC \
+      LIMIT 1;';
   const params = [
     postDate,
     heading,
@@ -53,6 +53,27 @@ api.createPost = (callback, postDate, heading, body, userId) => {
     heading,
     body,
     userId,
+  ];
+
+  db.query(sql, callback, params);
+};
+
+//Update a specific post
+api.updatePost = (callback, postId, heading, body) => {
+  const sql =
+    'UPDATE posts \
+      SET heading = ? \
+        , body = ? \
+      WHERE post_id = ?; \
+      SELECT \
+        * \
+      FROM posts \
+      WHERE post_id = ?;';
+  const params = [
+    heading,
+    body,
+    postId,
+    postId,
   ];
 
   db.query(sql, callback, params);

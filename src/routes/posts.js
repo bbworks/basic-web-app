@@ -1,6 +1,5 @@
 //Import modules
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const postAPI = require("../api/post");
 const utilities = require("../utilities");
 
