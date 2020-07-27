@@ -2,9 +2,9 @@
   <head>
     <%- include ("partials/head", {
       meta: {
-        title: "App | Home",
-        description: "This is my app.",
-        cssSheetName: "index"
+        title: "App | Search",
+        description: "This is the search.",
+        cssSheetNames: ["search.css", "searchForm.css"]
       },
     }) %>
   </head>
@@ -12,23 +12,23 @@
     <%- include ("partials/header") %>
     <main id="content" class="content">
       <section>
-        <form class="search-form" action="/posts/search" method="GET">
-          <input class="search-input" name="search" type="text" placeholder="Search..." value="<%- search %>" tabindex="1"/>
-          <button type="submit" class="search-button fas fa-search"></button>
-        </form>
+        <%- include ("partials/searchForm", {search: search}) %>
+      </section>
+      <section class="page-title-section">
+        <h2 class="page-title">Search</h2>
       </section>
       <% posts.forEach(post=>{ %>
-        <section id="post-<%- post.post_id %>" class="post-section">
-          <span class="post-heading"><%- post.heading %></span
+        <a id="post-<%- post.post_id %>" class="post-section" href="/posts/<%- post.post_id %>"span>
+          <h3 class="post-heading"><%- post.heading %></h3
           ><img class="post-image" src="<%- post.post_photo_url %>" /
-          ><div class="post-author-container">
+          ><span class="post-author-container">
             <img class="post-author-photo" src="<%- post.user_photo_url %>" /
-            ><a class="post-author-name" href="/users/<%- post.author_id %>"><%- post.first_name+' '+post.last_name %></a>
-          </div
+            ><span class="post-author-name" href="/users/<%- post.author_id %>"><%- post.first_name+' '+post.last_name %></span>
+          </span
           ><span class="post-date"><%- post.post_date %></span
           ><p class="post-body"><%- post.body %></p
-          ><a class="post-continue-reading-button" href="/posts/<%- post.post_id %>">Continue Reading</a>
-        </section>
+          ><!-- <a class="post-continue-reading-button" href="/posts/<%- post.post_id %>">Continue Reading</a> -->
+        </a>
         <% if (posts.indexOf(post) < posts.length-1) { %>
           <hr class="content-hr" />
         <% } %>

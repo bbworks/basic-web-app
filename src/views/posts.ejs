@@ -4,7 +4,7 @@
       meta: {
         title: "App | Posts",
         description: "This is my app.",
-        cssSheetName: "posts"
+        cssSheetNames: ["posts.css",]
       },
     }) %>
   </head>
@@ -21,7 +21,7 @@
         	><span class="post-date"><%- post.post_date %></span>
         </div>
         <img class="post-image" src="<%- post.post_photo_url %>" /
-      	><p class="post-body"><%- post.body %></p>
+        ><p class="post-body"><%- post.body.replace(/(\r\n|\r|\n)/g,"</p><br /><p>") %></p>
       </section>
     </main>
     <%- include ("partials/footer") %>

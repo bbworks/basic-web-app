@@ -4,7 +4,7 @@
       meta: {
         title: "App | Home",
         description: "This is my app.",
-        cssSheetName: "index"
+        cssSheetNames: ["index.css","searchForm.css",]
       },
     }) %>
   </head>
@@ -12,10 +12,7 @@
     <%- include ("partials/header") %>
     <main id="content" class="content">
       <section>
-        <form class="search-form" action="/posts/search" method="GET">
-          <input class="search-input" name="search" type="text" placeholder="Search..." tabindex="1"/>
-          <button type="submit" class="search-button fas fa-search"></button>
-        </form>
+        <%- include ("partials/searchForm", {search: null}) %>
       </section>
       <% posts.forEach(post=>{ %>
         <section id="post-<%- post.post_id %>" class="post-section">

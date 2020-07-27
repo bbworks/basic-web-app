@@ -8,7 +8,7 @@ router.get("/search", (request, response) => {
   const callback = (results) => {
     //Truncate the post body and format our date
     results.forEach(result=>{
-      result.body = utilities.truncatePost(result.body);
+      result.body = utilities.truncatePost(result.body, 225);
       result.post_date = utilities.formatDateString(result.post_date);
     });
 
