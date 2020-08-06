@@ -20,7 +20,7 @@ router.post("/", (request, response)=>{
     else {
       const user = results[0];
       authentication.setSessionInformation(request, response, user);
-      response.redirect("/account");
+      response.redirect("/menu");
       failedAttempt = false;
     }
   };

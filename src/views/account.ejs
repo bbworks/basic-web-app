@@ -23,7 +23,10 @@
         <label class="user-account-label" for="user-email-address-input">Email Address</label>
         <input id="user-phone-number-input" class="user-account-input" type="text" name="phoneNumber" value="<%- user.phone_number %>" />
         <label class="user-account-label" for="user-phone-number-input">Phone Number</label>
-        <button class="user-account-save-button" type="button">Save</button>
+        <div class="user-account-footer">
+          <button class="user-account-button user-account-save-button" type="button">Save</button>
+          <button class="user-account-button post-cancel-button" type="button" onclick="window.history.back();">Cancel</button>
+        </div>
         <div class="dialog-container">
           <dialog class="dialog" open>
             <p class="dialog-text">Are you sure you want to save?</p>

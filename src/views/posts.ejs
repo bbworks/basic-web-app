@@ -20,8 +20,11 @@
         	</div
         	><span class="post-date"><%- post.post_date %></span>
         </div>
-        <img class="post-image" src="<%- post.post_photo_url %>" /
-        ><p class="post-body"><%- post.body.replace(/(\r\n|\r|\n)/g,"</p><br /><p>") %></p>
+        <img class="post-image" src="<%- post.post_photo_url %>" />
+        <% if (sessionUser && sessionUser.userId === post.author_id) { %>
+          <a class="post-edit-button" href="/posts/<%- post.post_id %>/edit">Edit Post</a>
+        <% } %>
+        <p class="post-body"><%- post.body.replace(/(\r\n|\r|\n)/g,"</p><br /><p>") %></p>
       </section>
     </main>
     <%- include ("partials/footer") %>

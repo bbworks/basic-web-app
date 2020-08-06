@@ -47,6 +47,22 @@
   margin: 1rem 0;
 }
 
+.post-edit-button {
+  display: inline-block;
+  color: white;
+  background-color: rgb(100,100,100);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  border: none;
+}
+
+.post-edit-button:hover {
+  background-color: rgb(75,75,75);
+}
+
 .post-body {
   color: black;
   font-size: 1rem;

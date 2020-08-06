@@ -56,14 +56,24 @@
   padding-left: 0.5rem;
 }
 
-.user-account-save-button {
-  display: block;
+.user-account-footer {
+  margin: 0.5rem auto;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.user-account-footer.display {
+  opacity: 1;
+}
+
+.user-account-button {
+  display: inline-block;
   color: white;
   background-color: rgb(100,100,100);
   border: none;
   border-radius: 0.5em;
   padding: 0.5em 1em;
-  margin: 0 auto;
 }
 
 .dialog-container {

@@ -13,6 +13,7 @@ api.authenticate = (callback, username, password) => {
 };
 
 api.checkAuthentication = (request, response, next) => {
+  //If the user is not logged in, redirect them to the login screen
   if (!request.session.user) {
     response.redirect("/login");
   }

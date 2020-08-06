@@ -47,3 +47,32 @@
 
   saveButton.addEventListener("click", (event)=>{displayDialogBeforeSubmit(true);});
 }());
+
+//Create function to handle the visibility of the save/cancel buttons
+(function() {
+  const inputs = {};
+  let changed = new Set();
+
+  const displayButtonsOnChange = function() {
+    if (changed.size > 0) {
+      document.getElementsByClassName("user-account-footer")[0].classList.add("display");
+    }
+    else {
+      document.getElementsByClassName("user-account-footer")[0].classList.remove("display");
+    }
+  };
+
+  new Array(...document.getElementsByTagName("input")).forEach(item=>{
+    inputs[item.id] = item.value;
+    item.addEventListener("input", event=>{
+      if (item. value !== inputs[item.id]) {
+        changed.add(item.id);
+      }
+      else {
+        changed.delete(item.id);
+      }
+      displayButtonsOnChange();
+    });
+  });
+  displayButtonsOnChange();
+})();
