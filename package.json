@@ -4,7 +4,13 @@
   "description": "Basic web app.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-database-service": "powershell.exe -Command \"if ((Get-Service MySQL8.0.21).Status -eq 'Stopped') {try{Write-Host 'Starting service MySQL8.0.21...'; Start-Service 'MySQL8.0.21' -ErrorAction Stop; Write-Host 'Service MySQL8.0.21 started.'}catch{Write-Host 'Service start failed. Try running Command Prompt as administrator.' -ForegroundColor Red}}\"",
+    "stop-database-service": "net stop MySQL8.0.21",
+    "check-database-service": "powershell.exe -Command \"Get-Service MySQL8.0.21 | Format-List -Property Name, DisplayName, Status, StartType\"",
+
+    "start-server": "nodemon app.js",
+
+    "start": "npm run start-database-service & npm run start-server"
   },
   "author": "Bradley Biera",
   "license": "ISC",
@@ -14,5 +20,7 @@
     "express-session": "^1.17.1",
     "mysql": "^2.18.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }

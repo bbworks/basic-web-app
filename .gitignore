@@ -1,1 +1,9 @@
+# Dependency directories
+node_modules/
+
+# Miscellaneous
 misc/
+
+# Logs
+logs
+*.log
