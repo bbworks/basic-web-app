@@ -1,6 +1,7 @@
+//Import modules
 const mysql = require("mysql");
 
-//Create singleton database object
+//Create singleton object
 const Database = function() {
   let connection;
 
@@ -14,9 +15,7 @@ const Database = function() {
     });
 
     connection.connect((exception)=>{
-      if (exception) {
-        throw exception;
-      }
+      if (exception) throw exception;
       console.log("Database connected.");
     });
   };
@@ -29,9 +28,7 @@ const Database = function() {
   //Initialize the database connection
   this.init = function() {
     //If we have already instantiated our database connection, skip
-    if (connection) {
-      return true;
-    }
+    if (connection) return
 
     //Instantiate the database connection
     startConnection();
@@ -40,9 +37,7 @@ const Database = function() {
   this.query = function(sql, callback, params) {
     //Query the database
     connection.query(sql, params, (exception, results) => {
-      if (exception) {
-        throw exception;
-      }
+      if (exception) throw exception;
       //console.log("Command completed successfully.");
 
       //Return the results

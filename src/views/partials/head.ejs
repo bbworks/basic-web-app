@@ -1,19 +1,21 @@
 <!-- views/partials/head.ejs -->
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="description" content="<%- meta.description %>">
-<link type="image/ico" rel="icon" href="/assets/logo.png">
-<title><%- meta.title %></title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="<%- meta.description %>">
+    <link type="image/ico" rel="icon" href="/assets/logo.png">
+    <title><%- meta.title %></title>
 
-<!-- FONT AWESOME -->
-<!-- NOTE: Import Font Awesome first, so we can override the formating of their icons -->
-<link type="text/css" rel="stylesheet" href="/css/fontawesome-free-5.14.0-web/css/all.min.css"></link>
+    <!-- FONT AWESOME -->
+    <!-- NOTE: Import Font Awesome first, so we can override the formating of their icons -->
+    <link type="text/css" rel="stylesheet" href="/css/fontawesome-free-5.14.0-web/css/all.min.css"></link>
 
-<!-- STYLESHEETS -->
-<link type="text/css" rel="stylesheet" href="/css/main.css">
-<link type="text/css" rel="stylesheet" href="/css/header.css">
-<link type="text/css" rel="stylesheet" href="/css/footer.css">
-<% meta.cssSheetNames.forEach(stylesheet=>{ %>
-<link type="text/css" rel="stylesheet" href="/css/<%- stylesheet %>">
-<% }); %>
+    <!-- STYLESHEETS -->
+    <link type="text/css" rel="stylesheet" href="/css/main.css">
+    <link type="text/css" rel="stylesheet" href="/css/header.css">
+    <link type="text/css" rel="stylesheet" href="/css/footer.css">
+    <% meta.cssSheetNames.forEach(stylesheet=>{ %>
+    <link type="text/css" rel="stylesheet" href="/css/<%- stylesheet %>">
+    <% }); %>
+  </head>

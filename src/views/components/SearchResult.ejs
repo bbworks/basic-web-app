@@ -1,0 +1,11 @@
+          <a id="post-<%- post.post_id %>" class="post-section" href="/posts/<%- post.post_id %>"span>
+            <h3 class="post-heading"><%- post.heading %></h3
+            ><img class="post-image" src="<%- post.post_photo_url %>" /
+            ><span class="post-author-container">
+              <img class="post-author-photo" src="<%- post.user_photo_url %>" /
+              ><span class="post-author-name" href="/users/<%- post.author_id %>"><%- post.first_name+' '+post.last_name %></span>
+            </span
+            ><span class="post-date"><%- post.post_date %></span
+            ><p class="post-body"><%- post.body %></p
+            ><!-- <a class="post-continue-reading-button" href="/posts/<%- post.post_id %>">Continue Reading</a> -->
+          </a>

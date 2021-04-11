@@ -8,7 +8,7 @@
     "stop-database-service": "net stop MySQL8.0.21",
     "check-database-service": "powershell.exe -Command \"Get-Service MySQL8.0.21 | Format-List -Property Name, DisplayName, Status, StartType\"",
 
-    "start-server": "nodemon app.js",
+    "start-server": "nodemon ./app.js",
 
     "start": "npm run start-database-service & npm run start-server"
   },

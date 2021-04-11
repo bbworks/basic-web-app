@@ -1,0 +1,24 @@
+<html>
+    <%- include ("../partials/head", {
+      meta: {
+        title: "App | Posts",
+        description: "This is my app.",
+        cssSheetNames: ["posts.css",]
+      },
+    }) %>
+  <body>
+    <%- include ("../partials/header") %>
+    <main id="content" class="content">
+      <%- include ("../components/PostDetail", {
+  			post: post,
+        sessionUser: sessionUser,
+  		}) %>
+    </main>
+    <%- include ("../partials/footer", {
+			currentPage: "home",
+		}) %>
+    <%- include("../partials/script.ejs", {
+      scripts: [],
+    }) %>
+  </body>
+</html>

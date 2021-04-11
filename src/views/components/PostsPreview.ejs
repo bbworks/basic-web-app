@@ -1,0 +1,11 @@
+        <div class="posts">
+          <h3 class="posts-heading">Posts</h3>
+          <% posts.map((post, index) => { %>
+            <%- include ("PostPreview", {
+              post: post
+            }) %>
+            <% if (index < posts.length-1) { %>
+              <hr class="content-hr" />
+            <% } %>
+          <% }); %>
+        </div>

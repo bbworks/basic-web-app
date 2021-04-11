@@ -1,16 +1,3 @@
-<html>
-  <head>
-    <%- include ("partials/head", {
-      meta: {
-        title: "App | Login",
-        description: "This is my app.",
-        cssSheetNames: ["login.css",]
-      },
-    }) %>
-  </head>
-  <body>
-    <%- include ("partials/header") %>
-    <main class="content">
       <form class="login-form" action="/login" method="POST">
         <div class="login-form-header">
           <h3 class="login-form-heading">Log In</h3>
@@ -25,8 +12,3 @@
           <i class="login-form-loading-circle fas fa-spinner"></i>
         </div>
       </form>
-    </main>
-    <%- include ("partials/footer") %>
-  </body>
-  <script src="/js/currentPage.js"></script>
-</html>

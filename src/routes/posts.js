@@ -13,9 +13,9 @@ router.get("/search", (request, response) => {
       result.post_date = utilities.formatDateString(result.post_date);
     });
 
-    response.render("search.ejs", {posts: results, search: request.query.search});
+    response.render("routes/search.ejs", {posts: results, search: request.query.q});
   };
-  postAPI.searchPosts(callback, request.query.search);
+  postAPI.searchPosts(callback, request.query.q);
 });
 
 router.get("/:post_id", (request, response)=>{
@@ -25,7 +25,7 @@ router.get("/:post_id", (request, response)=>{
     //Format our date
     post.post_date = utilities.formatDateString(post.post_date);
 
-    response.render("posts.ejs", {post: post, sessionUser: request.session.user});
+    response.render("routes/posts.ejs", {post: post, sessionUser: request.session.user});
   };
   postAPI.getPost(callback, request.params.post_id);
 });
@@ -34,7 +34,7 @@ router.get("/:post_id/edit", authentication.checkAuthentication, (request, respo
   const callback = (results) => {
     const post = results[0];
 
-    response.render("edit.ejs", {post: post, pageUrl: `/posts/${request.params.post_id}`});
+    response.render("routes/edit.ejs", {post: post, pageUrl: `/posts/${request.params.post_id}`});
   };
   postAPI.getPost(callback, request.params.post_id);
 });

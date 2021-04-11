@@ -1,0 +1,23 @@
+<html>
+    <%- include ("../partials/head", {
+      meta: {
+        title: "App | Login",
+        description: "This is my app.",
+        cssSheetNames: ["login.css",]
+      },
+    }) %>
+  <body>
+    <%- include ("../partials/header") %>
+    <main class="content">
+      <%- include ("../components/LoginForm", {
+  			failure: failure,
+  		}) %>
+    </main>
+    <%- include ("../partials/footer", {
+			currentPage: "menu",
+		}) %>
+    <%- include("../partials/script.ejs", {
+      scripts: [],
+    }) %>
+  </body>
+</html>

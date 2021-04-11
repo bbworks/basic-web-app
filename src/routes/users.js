@@ -15,7 +15,7 @@ router.get("/:user_id", (request, response)=>{
         post.post_date = utilities.formatDateString(post.post_date);
       });
 
-      response.render("users.ejs", {user: user, posts: posts, sessionUser: request.session.user});
+      response.render("routes/users.ejs", {user: user, posts: posts, sessionUser: request.session.user});
     }
     userAPI.getUserPosts(callback, request.params.user_id);
   };

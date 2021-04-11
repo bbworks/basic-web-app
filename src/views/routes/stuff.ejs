@@ -1,19 +1,21 @@
 <html>
-  <head>
-    <%- include ("partials/head", {
+    <%- include ("../partials/head", {
       meta: {
         title: "App | Stuff",
         description: "This is my app.",
         cssSheetNames: ["stuff.css",]
       },
     }) %>
-  </head>
   <body>
-    <%- include ("partials/header") %>
+    <%- include ("../partials/header") %>
     <main id="content" class="content">
       stuff.ejs
     </main>
-    <%- include ("partials/footer") %>
+    <%- include ("../partials/footer", {
+			currentPage: "stuff",
+		}) %>
+    <%- include("../partials/script.ejs", {
+      scripts: [],
+    }) %>
   </body>
-  <script src="/js/currentPage.js"></script>
 </html>

@@ -12,7 +12,7 @@ router.get("/", (request, response) => {
       result.post_date = utilities.formatDateString(result.post_date);
     });
 
-    response.render("index.ejs", {posts: results});
+    response.render("routes/index.ejs", {posts: results});
   };
   postAPI.getPosts(callback);
 });

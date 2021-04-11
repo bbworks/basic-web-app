@@ -8,7 +8,7 @@ router.get("/search", (request, response)=>{
   const callback = (results) => {
     response.send(results);
   };
-  api.searchPosts(callback, request.query.search);
+  api.searchPosts(callback, request.query.q);
 });
 
 //Get all posts

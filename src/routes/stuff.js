@@ -2,7 +2,7 @@
 const router = require("express").Router();
 
 router.get("/", (request, response) => {
-  response.render("stuff.ejs");
+  response.render("routes/stuff.ejs");
 });
 
 module.exports = router;

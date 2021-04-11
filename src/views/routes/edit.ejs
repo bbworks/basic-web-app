@@ -1,15 +1,13 @@
 <html>
-  <head>
-    <%- include ("partials/head", {
+    <%- include ("../partials/head", {
       meta: {
         title: "App | Posts",
         description: "This is my app.",
         cssSheetNames: ["edit.css",]
       },
     }) %>
-  </head>
   <body>
-    <%- include ("partials/header") %>
+    <%- include ("../partials/header") %>
     <main id="content" class="content">
       <section id="post-<%- post.post_id %>" class="post-section">
         <form class="post-form" method="POST">
@@ -34,8 +32,11 @@
         </form>
       </section>
     </main>
-    <%- include ("partials/footer") %>
+    <%- include ("../partials/footer", {
+			currentPage: "home",
+		}) %>
+    <%- include("../partials/script.ejs", {
+      scripts: ["edit.js"],
+    }) %>
   </body>
-  <script src="/js/currentPage.js"></script>
-  <script src="/js/edit.js"></script>
 </html>

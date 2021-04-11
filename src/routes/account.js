@@ -6,7 +6,7 @@ const authentication = require("../api/authentication");
 router.get("/", authentication.checkAuthentication, (request, response) => {
   const callback = (results) => {
     const userInfo = results[0];
-    response.render("account.ejs", {user: userInfo});
+    response.render("routes/account.ejs", {user: userInfo});
   };
   userAPI.getUser(callback, request.session.user.userId);
 });

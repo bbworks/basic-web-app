@@ -1,0 +1,8 @@
+<!-- views/partials/script.ejs -->
+
+<!-- Site-wide scripts -->
+
+<!-- Page-specific scripts -->
+<% scripts.forEach(script=>{ %>
+  <script src="/js/<%- script %>"></script>
+<% }); %>

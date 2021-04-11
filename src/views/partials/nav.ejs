@@ -1,0 +1,8 @@
+<!-- views/partials/nav.ejs -->
+
+<nav class="navbar<%-navClasses-%>">
+  <a class="navbar-button<%-navItemClasses-%><% if(currentPage === "home") { %> current<% } %>" href="/"><i class="navbar-icon fas fa-home"></i><span class="navbar-name">Home</span></a
+  ><a class="navbar-button<%-navItemClasses-%><% if(currentPage === "stuff") { %> current<% } %>" href="/stuff"><i class="navbar-icon fas fa-box-open"></i><span class="navbar-name">Stuff</span></a
+  ><a class="navbar-button<%-navItemClasses-%><% if(currentPage === "notifications") { %> current<% } %>" href="/notifications"><i class="navbar-icon fas fa-bell"></i><span class="navbar-name">Notifications</span></a
+  ><a class="navbar-button<%-navItemClasses-%><% if(currentPage === "menu") { %> current<% } %>" href="/menu"><i class="navbar-icon fas fa-bars"></i><span class="navbar-name">Menu</span></a>
+</nav>

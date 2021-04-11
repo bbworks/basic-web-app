@@ -1,25 +1,13 @@
-<html>
-  <head>
-    <%- include ("partials/head", {
-      meta: {
-        title: "App | Users",
-        description: "This is my app.",
-        cssSheetNames: ["users.css",]
-      },
-    }) %>
-  </head>
-  <body>
-    <%- include ("partials/header") %>
-    <main id="content" class="content">
+    <div class="user-page">
       <section class="user-section">
-      	<img class="user-photo" src="<%- user.user_photo_url %>" /
+        <img class="user-photo" src="<%- user.user_photo_url %>" /
         ><h3 class="user-name"><%- user.first_name+' '+user.last_name %></h3>
       </section>
       <% if (sessionUser && sessionUser.userId === user.user_id) { %>
         <button class="user-profile-edit-button" onclick="">Edit Profile</button>
       <% } %>
       <div class="posts">
-        <h2 class="post-container-heading">Posts by Bradley</h2>
+        <h2 class="post-container-heading">Posts by <%- user.first_name %></h2>
         <div class="post-container">
           <% posts.forEach(post=>{ %>
             <section id="post-<%- post.post_id %>" class="post-section">
@@ -39,8 +27,3 @@
           <% }); %>
         </div>
       </div>
-    </main>
-    <%- include ("partials/footer") %>
-  </body>
-  <script src="/js/currentPage.js"></script>
-</html>

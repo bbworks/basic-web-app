@@ -5,7 +5,7 @@ const authentication = require("../api/authentication");
 let failedAttempt = false;
 
 router.get("/", (request, response)=>{
-  response.render("login.ejs", {failure: failedAttempt});
+  response.render("routes/login.ejs", {failure: failedAttempt});
   failedAttempt = false;
 });
 

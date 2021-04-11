@@ -1,0 +1,26 @@
+<html>
+    <%- include ("../partials/head", {
+      meta: {
+        title: "App | Search",
+        description: "This is the search.",
+        cssSheetNames: ["search.css", "searchForm.css"]
+      },
+    }) %>
+  <body>
+    <%- include ("../partials/header") %>
+    <main id="content" class="content">
+      <%- include ("../components/SearchBar", {
+        search: search,
+      }) %>
+      <%- include ("../components/SearchResults", {
+        posts: posts,
+      }) %>
+    </main>
+    <%- include ("../partials/footer", {
+			currentPage: "home",
+		}) %>
+    <%- include("../partials/script.ejs", {
+      scripts: [],
+    }) %>
+  </body>
+</html>
