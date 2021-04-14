@@ -7,14 +7,14 @@
       },
     }) %>
   <body>
-    <%- include ("../partials/header") %>
+    <%- include ("../components/Header") %>
     <main id="content" class="content">
       <%- include ("../components/PostDetail", {
   			post: post,
         sessionUser: sessionUser,
   		}) %>
     </main>
-    <%- include ("../partials/footer", {
+    <%- include ("../components/Footer", {
 			currentPage: "home",
 		}) %>
     <%- include("../partials/script.ejs", {

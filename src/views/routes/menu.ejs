@@ -9,14 +9,14 @@
       },
     }) %>
   <body>
-    <%- include ("../partials/header") %>
+    <%- include ("../components/Header") %>
     <main id="content" class="content">
       <%- include ("../components/Menu", {
   			user: user,
         menuItems: menuItems,
   		}) %>
     </main>
-    <%- include ("../partials/footer", {
+    <%- include ("../components/Footer", {
 			currentPage: "menu",
 		}) %>
     <%- include("../partials/script.ejs", {

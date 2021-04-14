@@ -7,7 +7,7 @@
       },
     }) %>
   <body>
-    <%- include ("../partials/header") %>
+    <%- include ("../components/Header") %>
     <main id="content" class="content">
       <form class="account-form" method="POST">
         <section class="top-section">
@@ -34,7 +34,7 @@
         </div>
       </form>
     </main>
-    <%- include ("../partials/footer", {
+    <%- include ("../components/Footer", {
 			currentPage: "menu",
 		}) %>
     <%- include("../partials/script.ejs", {

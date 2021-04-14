@@ -5,7 +5,8 @@
   font-size: 1.2em;
   text-decoration: none;
   padding: 0.5em 1em;
-  border-bottom: 1px solid gray;
+  border-right: 2px solid gray;
+  border-bottom: 2px solid gray;
   border-radius: 0.5rem;
 }
 

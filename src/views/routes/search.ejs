@@ -7,7 +7,7 @@
       },
     }) %>
   <body>
-    <%- include ("../partials/header") %>
+    <%- include ("../components/Header") %>
     <main id="content" class="content">
       <%- include ("../components/SearchBar", {
         search: search,
@@ -16,7 +16,7 @@
         posts: posts,
       }) %>
     </main>
-    <%- include ("../partials/footer", {
+    <%- include ("../components/Footer", {
 			currentPage: "home",
 		}) %>
     <%- include("../partials/script.ejs", {

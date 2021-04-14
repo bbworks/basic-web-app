@@ -7,13 +7,13 @@
       },
     }) %>
   <body>
-    <%- include ("../partials/header") %>
+    <%- include ("../components/Header") %>
     <main class="content">
       <%- include ("../components/LoginForm", {
   			failure: failure,
   		}) %>
     </main>
-    <%- include ("../partials/footer", {
+    <%- include ("../components/Footer", {
 			currentPage: "menu",
 		}) %>
     <%- include("../partials/script.ejs", {

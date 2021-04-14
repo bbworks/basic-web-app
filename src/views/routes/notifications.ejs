@@ -7,11 +7,11 @@
       },
     }) %>
   <body>
-    <%- include ("../partials/header") %>
+    <%- include ("../components/Header") %>
     <main id="content" class="content">
       notifications.ejs
     </main>
-    <%- include ("../partials/footer", {
+    <%- include ("../components/Footer", {
 			currentPage: "notifications",
 		}) %>
     <%- include("../partials/script.ejs", {
