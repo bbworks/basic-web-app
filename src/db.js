@@ -1,28 +1,39 @@
 //Import modules
 const mysql = require("mysql");
+const util = require("util");
+const dbConfig = require("./secret/db.config");
+
+//Initialize variables
+const environment = "dev"; //process.env.NODE_ENV || "dev";
+const config = dbConfig[environment];
 
 //Create singleton object
 const Database = function() {
   let connection;
 
-  const startConnection = function() {
+  const connect = function() {
+    console.log(`Connecting to ${config.vendor}...`);
+
     connection = mysql.createConnection({
-      host: "localhost",
-      user: "BasicApp",
-      password: "$Password$123$",
-      database: "BasicApp",
-      multipleStatements: true,
+      host: config.host,
+      user: config.user,
+      password: config.password,
+      database: config.database,
+      multipleStatements: config.multipleStatements,
     });
 
-    connection.connect((exception)=>{
-      if (exception) throw exception;
-      console.log("Database connected.");
+    connection.connect((err)=>{
+      if (err) {
+        console.error(`Failed to connect to ${config.vendor} database ${config.database} user ${config.user} on port ${config.port}.`);
+        throw err;
+      }
+      console.log(`Connected to ${config.vendor} database ${config.database} user ${config.user} on port ${config.port}, thread_id ${connection.threadId}.`);
     });
   };
 
-  const endConnection = function() {
+  const disconnect = function() {
     connection.end();
-    console.log("Database disconnected.")
+    console.log(`Disconnected from ${config.vendor}.`);
   };
 
   //Initialize the database connection
@@ -31,22 +42,22 @@ const Database = function() {
     if (connection) return
 
     //Instantiate the database connection
-    startConnection();
+    connect();
   };
 
-  this.query = function(sql, callback, params) {
-    //Query the database
-    connection.query(sql, params, (exception, results) => {
-      if (exception) throw exception;
-      //console.log("Command completed successfully.");
-
-      //Return the results
-      callback(results);
+  this.query = function(sql, params) {
+    return new Promise((resolve, reject) => {
+      //Query the database
+      connection.query(sql, params, (err, results) => {
+        if (err) reject(err);
+        //console.log("Command completed successfully.");
+        resolve(results);
+      });
     });
   };
 
   this.destroy = function() {
-    endConnection();
+    disconnect();
   };
 };
 

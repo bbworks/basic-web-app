@@ -5,22 +5,22 @@ const db = require("../db");
 const api = {};
 
 //Get all posts
-api.getPosts = (callback) => {
+api.getPosts = () => {
   const sql = 'SELECT * FROM posts INNER JOIN users ON posts.author_id = users.user_id ORDER BY post_id;';
 
-  db.query(sql, callback);
+  return db.query(sql);
 };
 
 //Get a specific post
-api.getPost = (callback, postId) => {
+api.getPost = (postId) => {
   const sql = 'SELECT * FROM posts INNER JOIN users ON posts.author_id = users.user_id WHERE post_id = ?;';
   const params = [postId];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 //Create a post
-api.createPost = (callback, postDate, heading, body, userId) => {
+api.createPost = (postDate, heading, body, userId) => {
   const sql =
     'INSERT INTO posts( \
         post_date \
@@ -55,11 +55,11 @@ api.createPost = (callback, postDate, heading, body, userId) => {
     userId,
   ];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 //Update a specific post
-api.updatePost = (callback, postId, heading, body) => {
+api.updatePost = (postId, heading, body) => {
   const sql =
     'UPDATE posts \
       SET heading = ? \
@@ -76,19 +76,19 @@ api.updatePost = (callback, postId, heading, body) => {
     postId,
   ];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 //Delete a specific post
-api.deletePost = (callback, postId) => {
+api.deletePost = (postId) => {
   const sql = 'DELETE FROM posts WHERE post_id = ?;';
   const params = [post_id];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 //Get a specific post
-api.searchPosts = (callback, searchParams) => {
+api.searchPosts = (searchParams) => {
   let sql = 'SELECT * FROM posts INNER JOIN users ON posts.author_id = users.user_id ';
   let whereArray = [];
   let whereClause = "WHERE ";
@@ -97,7 +97,7 @@ api.searchPosts = (callback, searchParams) => {
   whereClause += whereArray.join(" OR ") + ";";
   sql += whereClause;
 
-  db.query(sql, callback);
+  return db.query(sql);
 };
 
 module.exports = api;

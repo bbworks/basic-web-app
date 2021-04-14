@@ -5,22 +5,22 @@ const db = require("../db");
 const api = {};
 
 //Get all users
-api.getUsers = (callback) => {
+api.getUsers = () => {
   const sql = 'SELECT * FROM users ORDER BY user_id;';
 
-  db.query(sql, callback);
+  return db.query(sql);
 };
 
 //Get a specific user
-api.getUser = (callback, userId) => {
+api.getUser = (userId) => {
   const sql = 'SELECT * FROM users WHERE user_id = ?;';
   const params = [userId];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 //Create a user
-api.createUser = (callback, username, password, firstName, lastName, emailAddress, phoneNumber) => {
+api.createUser = (username, password, firstName, lastName, emailAddress, phoneNumber) => {
   const sql =
     'INSERT INTO users( \
         username \
@@ -56,11 +56,11 @@ api.createUser = (callback, username, password, firstName, lastName, emailAddres
     password,
   ];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 //Update a specific user
-api.updateUser = (callback, userId, firstName, lastName, emailAddress, phoneNumber) => {
+api.updateUser = (userId, firstName, lastName, emailAddress, phoneNumber) => {
   const sql =
   'UPDATE users \
   SET first_name = ? \
@@ -81,23 +81,23 @@ api.updateUser = (callback, userId, firstName, lastName, emailAddress, phoneNumb
     userId,
   ];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 //Delete a specific user
-api.deleteUser = (callback, userId) => {
+api.deleteUser = (userId) => {
   const sql = 'DELETE FROM users WHERE user_id = ?;';
   const params = [user_id];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 //Get a specific user's posts
-api.getUserPosts = (callback, userId) => {
+api.getUserPosts = (userId) => {
   const sql = 'SELECT * FROM users INNER JOIN posts ON users.user_id = posts.author_id WHERE user_id = ?;';
   const params = [userId];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 module.exports = api;

@@ -16,6 +16,7 @@ const loginRouter = require("./src/routes/login");
 const logoutRouter = require("./src/routes/logout");
 const postApiRouter = require("./src/routes/api/post");
 const userApiRouter = require("./src/routes/api/user");
+
 const db = require("./src/db");
 
 //Create and configure the app

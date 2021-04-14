@@ -5,16 +5,16 @@ const utilities = require("../utilities");
 
 
 router.get("/", (request, response) => {
-  const callback = (results) => {
-    //Truncate the post body and format our date
-    results.forEach(result=>{
-      result.body = utilities.truncatePost(result.body);
-      result.post_date = utilities.formatDateString(result.post_date);
-    });
+  postAPI.getPosts()
+    .then(results=>{
+      //Truncate the post body and format our date
+      results.forEach(result=>{
+        result.body = utilities.truncatePost(result.body);
+        result.post_date = utilities.formatDateString(result.post_date);
+      });
 
-    response.render("routes/index.ejs", {posts: results});
-  };
-  postAPI.getPosts(callback);
+      response.render("routes/index.ejs", {posts: results});
+    });
 });
 
 module.exports = router;

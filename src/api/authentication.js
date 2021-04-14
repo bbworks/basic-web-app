@@ -5,11 +5,11 @@ const db = require("../db");
 const api = {};
 
 //Authenticate the user
-api.authenticate = (callback, username, password) => {
+api.authenticate = (username, password) => {
   const sql = 'SELECT * FROM users WHERE username = ? AND password = SHA1(?) ORDER BY user_id LIMIT 1;';
   const params = [username, password];
 
-  db.query(sql, callback, params);
+  return db.query(sql, params);
 };
 
 api.checkAuthentication = (request, response, next) => {
