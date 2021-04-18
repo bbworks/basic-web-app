@@ -1,0 +1,18 @@
+USE `BasicApp`;
+
+START TRANSACTION;
+
+DROP PROCEDURE IF EXISTS GetUserById;
+DELIMITER //
+CREATE PROCEDURE GetUserById(
+	$user_id INT
+)
+BEGIN
+	SELECT
+    *
+  FROM users
+  WHERE user_id = $user_id;
+END //
+DELIMITER ;
+
+COMMIT;

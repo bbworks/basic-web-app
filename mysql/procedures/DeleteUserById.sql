@@ -1,0 +1,16 @@
+USE `BasicApp`;
+
+START TRANSACTION;
+
+DROP PROCEDURE IF EXISTS DeleteUserById;
+DELIMITER //
+CREATE PROCEDURE DeleteUserById(
+	$user_id INT
+)
+BEGIN
+	DELETE FROM users
+  WHERE user_id = $user_id;
+END //
+DELIMITER ;
+
+COMMIT;
