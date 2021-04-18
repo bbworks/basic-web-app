@@ -32,7 +32,9 @@ const Database = function() {
   };
 
   const disconnect = function() {
-    connection.end();
+    //Closes connection once all queued queries are complete,
+    // as opposed to connection.destroy()
+    connection.end(err=>console.error(`Failed to disconnect from ${config.vendor}.`));
     console.log(`Disconnected from ${config.vendor}.`);
   };
 
@@ -47,11 +49,21 @@ const Database = function() {
 
   this.query = function(sql, params) {
     return new Promise((resolve, reject) => {
-      //Query the database
-      connection.query(sql, params, (err, results) => {
+      connection.query(sql, params, (err, results, fields) => {
         if (err) reject(err);
-        //console.log("Command completed successfully.");
-        resolve(results);
+        resolve(results, fields);
+      });
+    });
+  };
+
+  this.call = function(routine, params) {
+    if (!params instanceof Array) params = [params];
+    return new Promise((resolve, reject) => {
+      connection.query(`CALL ${routine}(${Array((!params ? 0 : params.length)).fill("?").join(",")});`, params, (err, response, fields) => {
+        if (err) reject(err);
+        const results = (response[0] instanceof Array && response[0].length ===1 ? response[0][0] : response[0]);
+        const messages = response[1];
+        resolve(results, messages, fields);
       });
     });
   };

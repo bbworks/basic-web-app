@@ -1,7 +1,6 @@
 //Import modules
 const router = require("express").Router();
-const postAPI = require("../api/post");
-const authentication = require("../api/authentication");
+const {postAPI, authenticationAPI} = require("../api/index.js");
 const utilities = require("../utilities");
 
 
@@ -21,7 +20,7 @@ router.get("/search", (request, response) => {
 router.get("/:post_id", (request, response)=>{
   postAPI.getPost(request.params.post_id)
     .then(results=>{
-      const post = results[0];
+      const post = results;
 
       //Format our date
       post.post_date = utilities.formatDateString(post.post_date);
@@ -30,7 +29,7 @@ router.get("/:post_id", (request, response)=>{
     });
 });
 
-router.get("/:post_id/edit", authentication.checkAuthentication, (request, response)=>{
+router.get("/:post_id/edit", authenticationAPI.checkAuthentication, (request, response)=>{
   postAPI.getPost(request.params.post_id)
     .then(results=>{
       const post = results[0];
@@ -39,7 +38,7 @@ router.get("/:post_id/edit", authentication.checkAuthentication, (request, respo
     });
 });
 
-router.post("/:post_id/edit", authentication.checkAuthentication, (request, response)=>{
+router.post("/:post_id/edit", authenticationAPI.checkAuthentication, (request, response)=>{
   postAPI.updatePost(request.params.post_id, request.body.heading, request.body.body)
     .then(results=>{
       const post = results[0];

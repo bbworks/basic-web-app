@@ -1,11 +1,11 @@
 //Import modules
 const router = require("express").Router();
-const api = require("../../api/user");
+const {userAPI} = require("../../api/index.js");
 
 
 //Get all users
 router.get("/", (request, response)=>{
-  api.getUsers()
+  userAPI.getUsers()
     .then(results=>{
       response.send(results);
     });
@@ -13,7 +13,7 @@ router.get("/", (request, response)=>{
 
 //Get a specific user
 router.get("/:user_id", (request, response)=>{
-  api.getUser(request.params.user_id)
+  userAPI.getUser(request.params.user_id)
     .then(results=>{
       response.send(results);
     });
@@ -21,7 +21,7 @@ router.get("/:user_id", (request, response)=>{
 
 //Create a user
 router.post("/", (request, response)=>{
-  api.createUser(request.body.username, request.body.password, request.body.firstName, request.body.lastName, request.body.emailAddress, request.body.phoneNumber)
+  userAPI.createUser(request.body.username, request.body.password, request.body.firstName, request.body.lastName, request.body.emailAddress, request.body.phoneNumber)
     .then(results=>{
       response.send(results);
     });
@@ -29,7 +29,7 @@ router.post("/", (request, response)=>{
 
 //Update a specific user
 router.put("/:user_id", (request, response)=>{
-  api.updateUser(request.params.user_id, request.body.firstName, request.body.lastName, request.body.emailAddress, request.body.phoneNumber)
+  userAPI.updateUser(request.params.user_id, request.body.firstName, request.body.lastName, request.body.emailAddress, request.body.phoneNumber)
     .then(results=>{
       response.send(results);
     });
@@ -37,7 +37,7 @@ router.put("/:user_id", (request, response)=>{
 
 //Delete a specific user
 router.delete("/:user_id", (request, response)=>{
-  api.deleteUser(request.params.user_id)
+  userAPI.deleteUser(request.params.user_id)
     .then(results=>{
       response.send(results);
     });
@@ -45,7 +45,7 @@ router.delete("/:user_id", (request, response)=>{
 
 //Get a specific user's posts
 router.get("/:user_id/post", (request, response)=>{
-  api.getUserPosts(request.params.user_id)
+  userAPI.getUserPosts(request.params.user_id)
     .then(results=>{
       response.send(results);
     });

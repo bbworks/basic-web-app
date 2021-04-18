@@ -1,11 +1,11 @@
 //Import modules
 const router = require("express").Router();
-const api = require("../../api/post");
+const {postAPI} = require("../../api/index.js");
 
 
 //Search for posts
 router.get("/search", (request, response)=>{
-  api.searchPosts(request.query.q)
+  postAPI.searchPosts(request.query.q)
     .then(results=>{
       response.send(results);
     });
@@ -13,7 +13,7 @@ router.get("/search", (request, response)=>{
 
 //Get all posts
 router.get("/", (request, response)=>{
-  api.getPosts()
+  postAPI.getPosts()
     .then(results=>{
       response.send(results);
     });
@@ -21,15 +21,16 @@ router.get("/", (request, response)=>{
 
 //Get a specific post
 router.get("/:post_id", (request, response)=>{
-  api.getPost(request.params.post_id)
+  postAPI.getPost(request.params.post_id)
     .then(results=>{
+      console.log(results);
       response.send(results);
     });
 });
 
 //Create a post
 router.post("/", (request, response)=>{
-  api.createPost(request.body.postDate, request.body.heading, request.body.body, request.body.userId)
+  postAPI.createPost(request.body.postDate, request.body.heading, request.body.body, request.body.userId)
     .then(results=>{
       response.send(results);
     });
@@ -37,7 +38,7 @@ router.post("/", (request, response)=>{
 
 //Update a specific post
 router.put("/:post_id", (request, response)=>{
-  api.updatePost(request.params.post_id, request.body.heading, request.body.body)
+  postAPI.updatePost(request.params.post_id, request.body.heading, request.body.body)
     .then(results=>{
       response.send(results);
     });
@@ -45,7 +46,7 @@ router.put("/:post_id", (request, response)=>{
 
 //Delete a specific post
 router.delete("/:post_id", (request, response)=>{
-  api.deletePost(request.params.post_id)
+  postAPI.deletePost(request.params.post_id)
     .then(results=>{
       response.send(results);
     });

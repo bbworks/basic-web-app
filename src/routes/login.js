@@ -1,6 +1,6 @@
 //Import modules
 const router = require("express").Router();
-const authentication = require("../api/authentication");
+const {authenticationAPI} = require("../api/index.js");
 
 let failedAttempt = false;
 
@@ -10,7 +10,7 @@ router.get("/", (request, response)=>{
 });
 
 router.post("/", (request, response)=>{
-  authentication.authenticate(request.body.username, request.body.password)
+  authenticationAPI.authenticate(request.body.username, request.body.password)
     .then(results=>{
       //If we get back a falsy value (such as an empty array), redirect
       if (results == false) {
@@ -20,7 +20,7 @@ router.post("/", (request, response)=>{
       //Otherwise, move forward with authentication
       else {
         const user = results[0];
-        authentication.setSessionInformation(request, response, user);
+        authenticationAPI.setSessionInformation(request, response, user);
         response.redirect("/menu");
         failedAttempt = false;
       }

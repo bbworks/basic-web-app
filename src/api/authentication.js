@@ -2,17 +2,17 @@
 const db = require("../db");
 
 //Create singleton
-const api = {};
+const authAPI = {};
 
 //Authenticate the user
-api.authenticate = (username, password) => {
+authAPI.authenticate = (username, password) => {
   const sql = 'SELECT * FROM users WHERE username = ? AND password = SHA1(?) ORDER BY user_id LIMIT 1;';
   const params = [username, password];
 
   return db.query(sql, params);
 };
 
-api.checkAuthentication = (request, response, next) => {
+authAPI.checkAuthentication = (request, response, next) => {
   //If the user is not logged in, redirect them to the login screen
   if (!request.session.user) {
     response.redirect("/login");
@@ -22,7 +22,7 @@ api.checkAuthentication = (request, response, next) => {
   }
 };
 
-api.setSessionInformation = (request, response, user) => {
+authAPI.setSessionInformation = (request, response, user) => {
   request.session.user = {
     userId: user.user_id,
     username: user.username,
@@ -32,4 +32,4 @@ api.setSessionInformation = (request, response, user) => {
   };
 };
 
-module.exports = api;
+module.exports = authAPI;

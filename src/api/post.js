@@ -2,102 +2,45 @@
 const db = require("../db");
 
 //Create singleton
-const api = {};
+const postAPI = {};
 
 //Get all posts
-api.getPosts = () => {
-  const sql = 'SELECT * FROM posts INNER JOIN users ON posts.author_id = users.user_id ORDER BY post_id;';
-
-  return db.query(sql);
+postAPI.getPosts = () => {
+  return db.call("GetPosts");
 };
 
 //Get a specific post
-api.getPost = (postId) => {
-  const sql = 'SELECT * FROM posts INNER JOIN users ON posts.author_id = users.user_id WHERE post_id = ?;';
-  const params = [postId];
-
-  return db.query(sql, params);
+postAPI.getPost = (postId) => {
+  return db.call("GetPostById", postId);
 };
 
 //Create a post
-api.createPost = (postDate, heading, body, userId) => {
-  const sql =
-    'INSERT INTO posts( \
-        post_date \
-        , heading \
-        , body \
-        , author_id \
-      ) \
-      VALUES ( \
-         ? \
-         , ? \
-         , ? \
-         , ? \
-      ); \
-      SELECT \
-        * \
-      FROM posts \
-      WHERE \
-        post_date = ? \
-        AND heading = ? \
-        AND body = ? \
-        AND author_id = ? \
-      ORDER BY post_id DESC \
-      LIMIT 1;';
-  const params = [
+postAPI.createPost = (postDate, heading, body, userId) => {
+  return db.call("CreatePost", [
     postDate,
     heading,
     body,
     userId,
-    postDate,
-    heading,
-    body,
-    userId,
-  ];
-
-  return db.query(sql, params);
+  ]);
 };
 
 //Update a specific post
-api.updatePost = (postId, heading, body) => {
-  const sql =
-    'UPDATE posts \
-      SET heading = ? \
-        , body = ? \
-      WHERE post_id = ?; \
-      SELECT \
-        * \
-      FROM posts \
-      WHERE post_id = ?;';
-  const params = [
+postAPI.updatePost = (postId, heading, body) => {
+  return db.call("CreatePost", [
+    postId,
     heading,
-    body,
-    postId,
-    postId,
-  ];
-
-  return db.query(sql, params);
+    body
+  ]);
 };
 
 //Delete a specific post
-api.deletePost = (postId) => {
-  const sql = 'DELETE FROM posts WHERE post_id = ?;';
-  const params = [post_id];
-
-  return db.query(sql, params);
+postAPI.deletePost = (postId) => {
+  return db.call("DeletePostById", postId);
 };
 
 //Get a specific post
-api.searchPosts = (searchParams) => {
-  let sql = 'SELECT * FROM posts INNER JOIN users ON posts.author_id = users.user_id ';
-  let whereArray = [];
-  let whereClause = "WHERE ";
-  let query = "first_name LIKE ? OR last_name LIKE ? OR email_address LIKE ? OR phone_number LIKE ? OR post_date LIKE ? OR heading LIKE ? OR body LIKE ? OR author_id LIKE ?";
-  searchParams.split(" ").forEach(item=>{whereArray.push(query.replace(/\?/g, `'%${item}%'`));});
-  whereClause += whereArray.join(" OR ") + ";";
-  sql += whereClause;
-
-  return db.query(sql);
+postAPI.searchPosts = (searchParams) => {
+  return db.call("SearchPostsByKeywords", searchParams);
 };
 
-module.exports = api;
+module.exports = postAPI;

@@ -1,13 +1,11 @@
 //Import modules
 const router = require("express").Router();
-const userAPI = require("../api/user");
+const {userAPI} = require("../api/index.js");
 const utilities = require("../utilities");
 
 router.get("/:user_id", async (request, response)=>{
-  const userResults = await userAPI.getUser(request.params.user_id);
+  const user = await userAPI.getUser(request.params.user_id);
   const posts = await userAPI.getUserPosts(request.params.user_id);
-
-  const user = userResults[0];
 
   //Truncate the post body and format our date
   posts.forEach(post=>{
