@@ -5,31 +5,21 @@ const path = require("path");
 const mysql = require("mysql");
 const session = require("express-session");
 
-const indexRouter = require("./src/routes/index");
-const postsRouter = require("./src/routes/posts");
-const usersRouter = require("./src/routes/users");
-const stuffRouter = require("./src/routes/stuff");
-const accountRouter = require("./src/routes/account");
-const notificationsRouter = require("./src/routes/notifications");
-const menuRouter = require("./src/routes/menu");
-const loginRouter = require("./src/routes/login");
-const logoutRouter = require("./src/routes/logout");
-const postApiRouter = require("./src/routes/api/post");
-const userApiRouter = require("./src/routes/api/user");
+const router = require("./routes/router.js");
 
-const db = require("./src/db");
+const db = require("./db.js");
 
 //Create and configure the app
 const app = express();
 const port = 3000;
-const publicDirectory = path.join(__dirname, "public");
+const publicDirectory = path.join(__dirname, "../public/");
 
 //Set up the initial database connection
 db.init();
 
 //Set the application view engine (for page rendering)
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname,"src/views"));
+app.set("views", path.join(__dirname, "views/"));
 
 //Set up application middleware
 
@@ -48,18 +38,7 @@ app.use(session({
 })); //Set up our session token
 
 //Set up application routes
-app.use("/", indexRouter);
-app.use("/posts", postsRouter);
-app.use("/users", usersRouter);
-app.use("/stuff", stuffRouter);
-app.use("/account", accountRouter);
-app.use("/notifications", notificationsRouter);
-app.use("/menu", menuRouter);
-app.use("/login", loginRouter);
-app.use("/logout", logoutRouter);
-
-app.use("/api/post", postApiRouter);
-app.use("/api/user", userApiRouter);
+app.use("/", router);
 
 //Set up 404 handling and forward to error handler
 // (HTTP 404 does not constitute an error)
