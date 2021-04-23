@@ -15,21 +15,25 @@ postAPI.getPost = (postId) => {
 };
 
 //Create a post
-postAPI.createPost = (postDate, heading, body, userId) => {
+postAPI.createPost = (postDate, heading, body, photoUrl, userId) => {
   return db.call("CreatePost", [
     postDate,
     heading,
     body,
+    photoUrl,
     userId,
   ]);
 };
 
 //Update a specific post
-postAPI.updatePost = (postId, heading, body) => {
-  return db.call("CreatePost", [
+postAPI.updatePost = (postId, postDate, heading, body, photoUrl, userId) => {
+  return db.call("UpdatePostById", [
     postId,
+    postDate,
     heading,
-    body
+    body,
+    photoUrl,
+    userId,
   ]);
 };
 

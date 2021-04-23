@@ -48,9 +48,10 @@ const Database = function() {
   };
 
   this.query = function(sql, params) {
+    if (!params instanceof Array) params = [params];
     return new Promise((resolve, reject) => {
       connection.query(sql, params, (err, results, fields) => {
-        if (err) reject(err);
+        if (err) return reject(`Error ${err.errno}, ${err.code}:\r\n${err.sqlMessage}`);
         resolve(results, fields);
       });
     });
@@ -58,9 +59,10 @@ const Database = function() {
 
   this.call = function(routine, params) {
     if (!params instanceof Array) params = [params];
+    let numOfParams = (params instanceof Array ? params.length : (params ? 1 : 0));
     return new Promise((resolve, reject) => {
-      connection.query(`CALL ${routine}(${Array((!params ? 0 : params.length)).fill("?").join(",")});`, params, (err, response, fields) => {
-        if (err) reject(err);
+      connection.query(`CALL ${routine}(${Array(numOfParams).fill("?").join(",")});`, params, (err, response, fields) => {
+        if (err) return reject(`Error ${err.errno}, ${err.code}:\r\n${err.sqlMessage}`);
         const results = (response[0] instanceof Array && response[0].length ===1 ? response[0][0] : response[0]);
         const messages = response[1];
         resolve(results, messages, fields);

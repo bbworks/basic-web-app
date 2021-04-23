@@ -7,9 +7,9 @@ DELIMITER //
 CREATE PROCEDURE GetUsers()
 BEGIN
 	SELECT
-    *
-  FROM users
-  ORDER BY user_id;
+		*
+	FROM users
+	ORDER BY user_id;
 END //
 DELIMITER ;
 

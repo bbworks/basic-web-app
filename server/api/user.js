@@ -15,7 +15,7 @@ userAPI.getUser = (userId) => {
 };
 
 //Create a user
-userAPI.createUser = (username, password, firstName, lastName, emailAddress, phoneNumber) => {
+userAPI.createUser = (username, password, firstName, lastName, emailAddress, phoneNumber, photoUrl) => {
   return db.call("CreateUser", [
     username,
     password,
@@ -23,26 +23,27 @@ userAPI.createUser = (username, password, firstName, lastName, emailAddress, pho
     lastName,
     emailAddress,
     phoneNumber,
-    username,
-    password,
+    photoUrl,
   ]);
 };
 
 //Update a specific user
-userAPI.updateUser = (userId, firstName, lastName, emailAddress, phoneNumber) => {
+userAPI.updateUser = (userId, username, password, firstName, lastName, emailAddress, phoneNumber, photoUrl) => {
   return db.call("UpdateUserById", [
+    userId,
+    username,
+    password,
     firstName,
     lastName,
     emailAddress,
     phoneNumber,
-    userId,
-    userId,
+    photoUrl,
   ]);
 };
 
 //Delete a specific user
 userAPI.deleteUser = (userId) => {
-  return db.call("DeleteUserById", user_id);
+  return db.call("DeleteUserById", userId);
 };
 
 //Get a specific user's posts
