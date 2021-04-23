@@ -52,15 +52,22 @@ function Loop-DirectoryFiles
         [Parameter(Mandatory=$true)][String]$Directory
     )
 
-    foreach($file in (Get-ChildItem -Path $Directory))
+    foreach($item in (Get-ChildItem -Path $Directory))
     {
         ##Check if this should be skipped, if so skip it
-        Check-Skip -Item $file
+        Check-Skip -Item $item
 
-        $parentDirectorySubDirectoryFile = ($file.FullName -split "\\")[-3..-1] -join "\"
-        Write-Host "Running $parentDirectorySubDirectoryFile..." -ForegroundColor Magenta
+        ##If the item is directory, recurse through it
+        if ($item.PSIsContainer) 
+        {
+            Loop-DirectoryFiles -Directory $item.FullName
+            continue;
+        }
 
-        Execute-Script -Path $file
+        $parentDirectorySubDirectoryItem = ($item.FullName -split "\\")[-3..-1] -join "\"
+        Write-Host "Running $parentDirectorySubDirectoryItem..." -ForegroundColor Magenta
+
+        Execute-Script -Path $item
     }
 }
 
