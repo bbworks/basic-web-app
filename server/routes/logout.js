@@ -2,9 +2,20 @@
 const router = require("express").Router();
 
 router.get("/", (request, response)=>{
-  delete request.session.user;
-  attempts = 0;
-  response.redirect("/login");
+  try {
+    //Destructure the request object
+    const {session} = request;
+
+    //Remove the user session data
+    delete session.user;
+    attempts = 0;
+
+    //Redirect the request to the login screen
+    response.redirect("/login");
+  }
+  catch (err) {
+    response.status(500).send(err);
+  }
 });
 
 module.exports = router;

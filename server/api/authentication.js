@@ -14,16 +14,13 @@ authAPI.authenticate = (username, password) => {
 
 authAPI.checkAuthentication = (request, response, next) => {
   //If the user is not logged in, redirect them to the login screen
-  if (!request.session.user) {
-    response.redirect("/login");
-  }
-  else {
-    next();
-  }
+  if (!request.session.user) return response.redirect("/login");
+
+  next();
 };
 
-authAPI.setSessionInformation = (request, response, user) => {
-  request.session.user = {
+authAPI.setSessionInformation = (user) => {
+  return {
     userId: user.user_id,
     username: user.username,
     firstName: user.first_name,

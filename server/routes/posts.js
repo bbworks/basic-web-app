@@ -4,47 +4,81 @@ const {postAPI, authenticationAPI} = require("../api/index.js");
 const utilities = require("../utilities");
 
 
-router.get("/search", (request, response) => {
-  postAPI.searchPosts(request.query.q)
-    .then(results=>{
-      //Truncate the post body and format our date
-      results.forEach(result=>{
-        result.body = utilities.truncatePost(result.body, 225);
-        result.post_date = utilities.formatDateString(result.post_date);
-      });
+router.get("/search", async (request, response) => {
+  try {
+    //Destructure the request object
+    const {query: {q: search}} = request;
 
-      response.render("routes/search.ejs", {posts: results, search: request.query.q});
+    //Call the searchPosts() API
+    const results = await postAPI.searchPosts(request.query.q);
+
+    //Massage the posts data
+    const posts = results.map(post=>{return {
+        ...post,
+        body: utilities.truncatePost(post.body, 225),
+        post_date: utilities.formatDateString(post.post_date),
+      };
     });
+
+    //Send the response
+    response.render("routes/search.ejs", {posts, search});
+  }
+  catch (err) {
+    response.status(500).send(err);
+  }
 });
 
-router.get("/:post_id", (request, response)=>{
-  postAPI.getPost(request.params.post_id)
-    .then(results=>{
-      const post = results;
+router.get("/:post_id", async (request, response)=>{
+  try {
+    //Destructure the request object
+    const {params: {post_id: postId}, session: {user: sessionUser}} = request;
 
-      //Format our date
-      post.post_date = utilities.formatDateString(post.post_date);
+    //Call the getPost() API
+    const results = await postAPI.getPost(postId);
 
-      response.render("routes/posts.ejs", {post: post, sessionUser: request.session.user});
-    });
+    //Massage the data
+    const post = {
+      ...results,
+      post_date: utilities.formatDateString(results.post_date)
+    };
+
+    //Send the response
+    response.render("routes/posts.ejs", {post, sessionUser});
+  }
+  catch (err) {
+    response.status(500).send(err);
+  }
 });
 
-router.get("/:post_id/edit", authenticationAPI.checkAuthentication, (request, response)=>{
-  postAPI.getPost(request.params.post_id)
-    .then(results=>{
-      const post = results[0];
+router.get("/:post_id/edit", authenticationAPI.checkAuthentication, async (request, response)=>{
+  try {
+    //Destructure the request object
+    const {params: {post_id: postId}} = request;
 
-      response.render("routes/post_edit.ejs", {post: post, pageUrl: `/posts/${request.params.post_id}`});
-    });
+    //Call the getPost() API
+    const post = await postAPI.getPost(postId);
+
+    //Send the response
+    response.render("routes/post_edit.ejs", {post, pageUrl: `/posts/${postId}`});
+  }
+  catch (err) {
+    response.status(500).send(err);
+  }
 });
 
-router.post("/:post_id/edit", authenticationAPI.checkAuthentication, (request, response)=>{
-  postAPI.updatePost(request.params.post_id, request.body.heading, request.body.body)
-    .then(results=>{
-      const post = results[0];
+router.post("/:post_id/edit", authenticationAPI.checkAuthentication, async (request, response)=>{
+  try {
+    //Destructure the request object
+    const {params: {post_id: postId}, body: {heading, body}} = request;
 
-      response.redirect(`/posts/${request.params.post_id}`);
-    });
+    //Call the updatePost() API
+    const post = await postAPI.updatePost(postId, null, heading, body, null, null);
+
+    response.redirect(`/posts/${postId}`);
+  }
+  catch (err) {
+    response.status(500).send(err);
+  }
 });
 
 module.exports = router;

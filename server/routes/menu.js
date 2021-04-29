@@ -2,7 +2,16 @@
 const router = require("express").Router();
 
 router.get("/", (request, response) => {
-  response.render("routes/menu.ejs", {user: request.session.user});
+  try {
+    //Destructure the request object
+    const {session: {user}} = request;
+
+    //Send the response
+    response.render("routes/menu.ejs", {user});
+  }
+  catch (err) {
+    response.status(500).send(err);
+  }
 });
 
 module.exports = router;

@@ -50,8 +50,9 @@ const Database = function() {
   this.query = function(sql, params) {
     if (!params instanceof Array) params = [params];
     return new Promise((resolve, reject) => {
-      connection.query(sql, params, (err, results, fields) => {
+      connection.query(sql, params, (err, response, fields) => {
         if (err) return reject(`Error ${err.errno}, ${err.code}:\r\n${err.sqlMessage}`);
+        const results = (response[0] instanceof Array && response[0].length ===1 ? response[0][0] : response[0]);
         resolve(results, fields);
       });
     });

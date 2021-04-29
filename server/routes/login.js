@@ -9,28 +9,32 @@ router.get("/", (request, response)=>{
   failedAttempt = false;
 });
 
-router.post("/", (request, response)=>{
-  authenticationAPI.authenticate(request.body.username, request.body.password)
-    .then(results=>{
-      //If we get back a falsy value (such as an empty array), redirect
-      if (results == false) {
-        response.redirect("/login");
-        failedAttempt = true;
-      }
-      //Otherwise, move forward with authentication
-      else {
-        const user = results[0];
-        authenticationAPI.setSessionInformation(request, response, user);
-        response.redirect("/menu");
-        failedAttempt = false;
-      }
-    });
-});
+router.post("/", async (request, response)=>{
+  try {
+    //Destructure the request object
+    const {body: {username, password}, session} = request;
 
-router.delete("/", (request, response)=>{
-  delete request.session.user;
-  attempts = 0;
-  response.redirect("/login");
+    //Call the authenticate() API
+    const user = await authenticationAPI.authenticate(username, password);
+
+    //If we get back a falsy value (such as an empty array),
+    // redirect back to the login screen
+    if (user == false) {
+      failedAttempt = true;
+      response.redirect("/login");
+      return;
+    }
+
+    //Otherwise, establish the user session
+    session.user = authenticationAPI.setSessionInformation(user);
+    failedAttempt = false;
+
+    //Send the response
+    response.redirect("/menu");
+  }
+  catch (err) {
+    response.status(500).send(err);
+  }
 });
 
 module.exports = router;

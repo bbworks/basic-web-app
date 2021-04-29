@@ -4,16 +4,28 @@ const {userAPI} = require("../api/index.js");
 const utilities = require("../utilities");
 
 router.get("/:user_id", async (request, response)=>{
-  const user = await userAPI.getUser(request.params.user_id);
-  const posts = await userAPI.getUserPosts(request.params.user_id);
+  try {
+    //Destructure the request object
+    const {params: {user_id: userId}, session: {user: sessionUser}} = request;
 
-  //Truncate the post body and format our date
-  posts.forEach(post=>{
-    post.body = utilities.truncatePost(post.body, 150);
-    post.post_date = utilities.formatDateString(post.post_date);
-  });
+    //Call the getPost() API
+    const user = await userAPI.getUser(userId);
+    const postsResults = await userAPI.getUserPosts(userId);
 
-  response.render("routes/users.ejs", {user: user, posts: posts, sessionUser: request.session.user});
+    //Truncate the post body and format our date
+    const posts = postsResults.map(post=>{return {
+        ...post,
+        body: utilities.truncatePost(post.body, 150),
+        post_date: utilities.formatDateString(post.post_date),
+      };
+    });
+
+    //Send the response
+    response.render("routes/users.ejs", {user, posts, sessionUser});
+  }
+  catch (err) {
+    response.status(500).send(err);
+  }
 });
 
 module.exports = router;
