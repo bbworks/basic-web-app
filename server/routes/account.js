@@ -6,7 +6,7 @@ router.get("/", authenticationAPI.checkAuthentication, (request, response) => {
   userAPI.getUser(request.session.user.userId)
     .then(results=>{
       const user = results;
-      response.render("routes/account.ejs", {user: user});
+      response.render("routes/account/account.ejs", {user: user});
     });
 });
 

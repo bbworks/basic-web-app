@@ -1,0 +1,26 @@
+<% logInOut = (!user) ? {text:"Log In", href:"/login"} : {text:"Log Out", href:"/logout"}; %>
+<% menuItems = [logInOut]; %>
+<html>
+    <%- include ("../../partials/head", {
+      meta: {
+        title: "App | Menu",
+        description: "This is my app.",
+        cssSheetNames: ["menu.css",]
+      },
+    }) %>
+  <body>
+    <%- include ("../../components/Header/Header") %>
+    <main id="content" class="content">
+      <%- include ("../../components/Menu/Menu", {
+  			user: user,
+        menuItems: menuItems,
+  		}) %>
+    </main>
+    <%- include ("../../components/Footer/Footer", {
+			currentPage: "menu",
+		}) %>
+    <%- include("../../partials/script.ejs", {
+      scripts: [],
+    }) %>
+  </body>
+</html>

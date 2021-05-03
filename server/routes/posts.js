@@ -21,7 +21,7 @@ router.get("/search", async (request, response) => {
     });
 
     //Send the response
-    response.render("routes/search.ejs", {posts, search});
+    response.render("routes/search/search.ejs", {posts, search});
   }
   catch (err) {
     response.status(500).send(err);
@@ -43,7 +43,7 @@ router.get("/:post_id", async (request, response)=>{
     };
 
     //Send the response
-    response.render("routes/posts.ejs", {post, sessionUser});
+    response.render("routes/posts/posts.ejs", {post, sessionUser});
   }
   catch (err) {
     response.status(500).send(err);
@@ -59,7 +59,7 @@ router.get("/:post_id/edit", authenticationAPI.checkAuthentication, async (reque
     const post = await postAPI.getPost(postId);
 
     //Send the response
-    response.render("routes/post_edit.ejs", {post, pageUrl: `/posts/${postId}`});
+    response.render("routes/post_edit/post_edit.ejs", {post, pageUrl: `/posts/${postId}`});
   }
   catch (err) {
     response.status(500).send(err);

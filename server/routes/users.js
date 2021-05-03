@@ -21,7 +21,7 @@ router.get("/:user_id", async (request, response)=>{
     });
 
     //Send the response
-    response.render("routes/users.ejs", {user, posts, sessionUser});
+    response.render("routes/users/users.ejs", {user, posts, sessionUser});
   }
   catch (err) {
     response.status(500).send(err);

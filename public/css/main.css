@@ -1,5 +1,6 @@
 :root {
-  --accent-color: #e85b4a; /*rgb(139,0,0) "darkred" //##3774ce*/
+  --accent-color: #e85b4a;
+  /*rgb(139,0,0) "darkred" //##3774ce*/
   --light-color: #f5f5ed;
   --dark-color: #4c3f49;
 }
@@ -30,3 +31,5 @@ a {
   border: 0.5px solid var(--accent-color);
   border-radius: 10rem;
 }
+
+/*# sourceMappingURL=main.css.map */

@@ -7,7 +7,7 @@ router.get("/", (request, response) => {
     const {session: {user}} = request;
 
     //Send the response
-    response.render("routes/menu.ejs", {user});
+    response.render("routes/menu/menu.ejs", {user});
   }
   catch (err) {
     response.status(500).send(err);

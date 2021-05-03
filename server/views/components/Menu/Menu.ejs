@@ -1,0 +1,12 @@
+      <div class="menu">
+        <% if(user) { %>
+          <%- include ("../UserProfileMenuItem/UserProfileMenuItem", {
+            user: user,
+          }) %>
+        <% } %>
+        <% for(const menuItem of menuItems) { %>
+        <%- include ("../MenuItem/MenuItem", {
+          menuItem: menuItem,
+        }) %>
+        <% }; %>
+      </div>
