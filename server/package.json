@@ -9,8 +9,8 @@
     "check:database-service": "powershell.exe -Command \"Get-Service MySQL8.0.21 | Format-List -Property Name, DisplayName, Status, StartType\"",
     "init:database": "powershell.exe -Command \".\\mysql\\BasicApp.ps1\"",
     "start:server": "nodemon ./app.js",
-    "build:sass": "sass views/components/:../public/css/ views/routes/:../public/css/ scss/:../public/css/",
-    "concatenate:css": "gulp concatenate:css",
+    "build:sass": "sass views/components/:../public/css/components/ views/routes/:../public/css/routes/ scss/:../public/css/",
+    "concatenate:css": "gulp concatenate-css",
     "compile:css": "npm run build:sass & npm run concatenate:css",
     "watch:sass": "onchange \"views/**/*.scss\" \"scss/*.scss\" -- npm run compile:css",
     "watch": "npm run watch:sass",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "concurrently": "^6.0.2",
     "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
     "gulp-cli": "^2.3.0",
     "gulp-concat-css": "^3.1.0",
     "nodemon": "^2.0.7",
