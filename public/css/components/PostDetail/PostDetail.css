@@ -1,49 +1,41 @@
-.post-section {
+.post {
   width: 100%;
 }
-
-.post-header {
+.post .post-header {
   margin-bottom: 1rem;
 }
-
-.post-heading {
+.post .post-heading {
   display: block;
   font-family: serif;
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
-
-.post-author-container {
+.post .post-author-container {
   display: block;
 }
-
-.post-author-photo {
+.post .post-author-photo {
   width: 2rem;
   height: 2rem;
   margin-right: 0.25em;
   border-radius: 50%;
 }
-
-.post-author-name {
+.post .post-author-name {
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--accent-color);
 }
-
-.post-date {
+.post .post-date {
   display: block;
   color: gray;
   font-size: 0.9rem;
   font-style: italic;
 }
-
-.post-image {
+.post .post-image {
   display: block;
   width: 100%;
   margin: 1rem 0;
 }
-
-.post-edit-button {
+.post .post-edit-button {
   display: inline-block;
   color: white;
   background-color: #646464;
@@ -54,12 +46,10 @@
   margin: 0.5rem 0;
   border: none;
 }
-
-.post-edit-button:hover {
+.post .post-edit-button:hover {
   background-color: #4b4b4b;
 }
-
-.post-body {
+.post .post-body {
   color: black;
   font-size: 1rem;
 }

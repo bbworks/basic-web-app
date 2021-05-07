@@ -1,81 +1,68 @@
-@@ -1,80 +0,0 @@
-.post-section {
-  position: relative;
-  width: 100%;
-  height: 60vw;
-  overflow-y: hidden;
-}
+.post-preview {
+   & {
+    position: relative;
+    width: 100%;
+    height: 60vw;
+    overflow-y: hidden;
+  }
 
-.post-image {
-  float: left;
-  width: 60%;
-  max-height: 60%;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+  .post-preview-image {
+    float: left;
+    width: 60%;
+    max-height: 60%;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-.post-heading {
-  display: block;
-  font-size: 1.5rem;
-  white-space: nowrap;
-  overflow-x: auto;
-  margin-bottom: 0.5em;
-}
+  .post-preview-heading {
+    display: block;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow-x: auto;
+    margin-bottom: 0.5em;
+  }
 
-.post-date {
-  display: block;
-  color: gray;
-  font-size: 0.6rem;
-  font-style: italic;
-  text-align: right;
-  margin-bottom: 0.5rem;
-}
+  .post-preview-date {
+    display: block;
+    color: gray;
+    font-size: 0.6rem;
+    font-style: italic;
+    text-align: right;
+    margin-bottom: 0.5rem;
+  }
 
-.post-author-container {
-  text-align: right;
-}
+  .post-preview-author-container {
+    text-align: right;
+  }
 
-.post-author-photo {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right: 0.25em;
-  border-radius: 50%;
-}
+  .post-preview-author-photo {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0.25em;
+    border-radius: 50%;
+  }
 
-.post-author-name {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: var(--accent-color);
-}
+  .post-preview-author-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--accent-color);
+  }
 
-.post-body {
-  color: gray;
-  font-size: 0.75rem;
-}
+  .post-preview-body {
+    color: gray;
+    font-size: 0.75rem;
+  }
 
-.post-body-see-more-button {
-  color: var(--accent-color);
-  cursor: pointer;
-  margin-left: 1rem;
-}
-
-.post-continue-reading-button {
-  display: inline-block;
-  position: absolute;
-  color: white;
-  background-color: var(--accent-color);
-  font-size: 0.8em;
-  padding: 0.4em 1em;
-  border-radius: 0.25em;
-  margin-top: 0.5em;
-  right: 0;
-  bottom: 0;
-}
-
-.post-body-more {
-  display: none;
-}
-
-@media screen and (mix-width: 600px) {
-
+  .post-preview-continue-reading-button {
+    display: inline-block;
+    position: absolute;
+    color: white;
+    background-color: var(--accent-color);
+    font-size: 0.8em;
+    padding: 0.4em 1em;
+    border-radius: 0.25em;
+    margin-top: 0.5em;
+    right: 0;
+    bottom: 0;
+  }
 }

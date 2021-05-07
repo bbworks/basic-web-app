@@ -1,8 +1,7 @@
-.menu-item-user-container {
+.menu-item-user {
   margin-bottom: 2rem;
 }
-
-.menu-item-user-photo {
+.menu-item-user .menu-item-user-photo {
   display: inline-block;
   width: 4rem;
   height: 4rem;
@@ -12,20 +11,17 @@
   object-fit: cover;
   object-position: 50% 50%;
 }
-
-.menu-item-user-name-container {
+.menu-item-user .menu-item-user-name-container {
   display: inline-block;
   padding-left: 0.5rem;
 }
-
-.menu-item-user-name {
+.menu-item-user .menu-item-user-name {
   display: inline-block;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: var(--accent-color);
 }
-
-.menu-item-user-username {
+.menu-item-user .menu-item-user-username {
   font-weight: normal;
   font-size: 0.9rem;
   margin-left: 0.25rem;

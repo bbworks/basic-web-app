@@ -1,16 +1,10 @@
-.content {
-  padding: 1rem;
-}
-
-.post-section {
+.post-edit {
   width: 100%;
 }
-
-.post-heading-container {
+.post-edit .post-heading-container {
   position: relative;
 }
-
-#post-heading-input {
+.post-edit #post-heading-input {
   display: block;
   width: 100%;
   font-family: serif;
@@ -18,13 +12,11 @@
   font-weight: normal;
   margin-bottom: 0.5rem;
 }
-
-#post-heading-input[readonly=""] {
+.post-edit #post-heading-input[readonly=""] {
   background: none;
   border: none;
 }
-
-.post-edit-button {
+.post-edit .post-edit-button {
   display: none;
   position: absolute;
   top: 0;
@@ -34,42 +26,35 @@
   background: none;
   border: none;
 }
-
-#post-heading-input[readonly=""] + .post-edit-button {
+.post-edit #post-heading-input[readonly=""] + .post-edit-button {
   display: block;
 }
-
-.post-author-container {
+.post-edit .post-author-container {
   display: block;
 }
-
-.post-author-photo {
+.post-edit .post-author-photo {
   width: 2rem;
   height: 2rem;
   margin-right: 0.25em;
   border-radius: 50%;
 }
-
-.post-author-name {
+.post-edit .post-author-name {
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--accent-color);
 }
-
-.post-date {
+.post-edit .post-date {
   display: block;
   color: gray;
   font-size: 0.9rem;
   font-style: italic;
 }
-
-.post-image {
+.post-edit .post-image {
   display: block;
   width: 100%;
   margin: 1rem 0;
 }
-
-#post-body-input {
+.post-edit #post-body-input {
   width: 100%;
   height: 20rem;
   resize: none;
@@ -78,17 +63,17 @@
   padding: 2rem 1rem;
   font-size: 1rem;
 }
-
-.post-form-footer {
+.post-edit .post-form-footer {
   margin: 0.5rem auto;
   text-align: center;
 }
-
-.post-form-button {
+.post-edit .post-form-button {
   display: inline-block;
   color: white;
-  background-color: rgb(100,100,100);
+  background-color: #646464;
   border: none;
   border-radius: 0.5em;
   padding: 0.5em 1em;
 }
+
+/*# sourceMappingURL=PostDetailEdit.css.map */

@@ -1,4 +1,16 @@
-.post-hr {
+.user-posts .user-post-container-heading {
+  display: block;
+  color: var(--dark-color);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.user-posts .user-post-container {
+  border: 2px solid lightgray;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.user-posts .post-hr {
   margin: 1em;
   border: 0.5px solid var(--accent-color);
   border-radius: 10rem;

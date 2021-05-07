@@ -1,4 +1,4 @@
-.post-section {
+.search-result {
   display: block;
   position: relative;
   width: 100%;
@@ -6,16 +6,14 @@
   overflow-y: hidden;
   color: unset;
 }
-
-.post-image {
+.search-result .search-result-image {
   float: right;
   width: 30%;
   max-height: 60%;
   margin-left: 0.5rem;
   margin-bottom: 0.25rem;
 }
-
-.post-heading {
+.search-result .search-result-heading {
   display: block;
   font-size: 1.2rem;
   font-weight: normal;
@@ -23,53 +21,26 @@
   overflow-x: auto;
   color: var(--accent-color);
 }
-
-.post-author-photo {
+.search-result .search-result-author-photo {
   width: 1.2rem;
   height: 1.2rem;
   margin-right: 0.25em;
   border-radius: 50%;
 }
-
-.post-author-name {
+.search-result .search-result-author-name {
   font-size: 0.75rem;
   font-weight: bold;
 }
-
-.post-date {
+.search-result .search-result-date {
   display: block;
   color: gray;
   font-size: 0.6rem;
   font-style: italic;
   margin-bottom: 0.5rem;
 }
-
-.post-body {
+.search-result .search-result-body {
   color: gray;
   font-size: 0.65rem;
-}
-
-.post-body-see-more-button {
-  color: var(--accent-color);
-  cursor: pointer;
-  margin-left: 1rem;
-}
-
-.post-continue-reading-button {
-  display: inline-block;
-  position: absolute;
-  color: white;
-  background-color: var(--accent-color);
-  font-size: 0.8em;
-  padding: 0.4em 1em;
-  border-radius: 0.25em;
-  margin-top: 0.5em;
-  right: 0;
-  bottom: 0;
-}
-
-.post-body-more {
-  display: none;
 }
 
 /*# sourceMappingURL=SearchResult.css.map */

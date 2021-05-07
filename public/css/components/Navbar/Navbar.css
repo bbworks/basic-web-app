@@ -6,25 +6,23 @@
   height: calc((100vw / 5) * 0.6);
   background-color: var(--dark-color);
 }
-
-.navbar-button {
+.navbar .navbar-button {
   display: inline-block;
   text-align: center;
-  color: rgb(245,245,245);
+  color: whitesmoke;
   width: 25%;
   height: 100%;
   font-size: 0.75rem;
   padding: 0.5rem 0;
 }
-
-.navbar-button.current {
-	background-color: var(--accent-color);
+.navbar .navbar-button.current {
+  background-color: var(--accent-color);
 }
-
-.navbar-icon, .navbar-name {
+.navbar .navbar-icon, .navbar .navbar-name {
   display: block;
 }
-
-.navbar-icon {
+.navbar .navbar-icon {
   font-size: 1.2rem;
 }
+
+/*# sourceMappingURL=Navbar.css.map */

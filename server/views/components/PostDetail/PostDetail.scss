@@ -1,65 +1,67 @@
-.post-section {
-  width: 100%;
-}
+.post {
+  & {
+    width: 100%;
+  }
 
-.post-header {
-  margin-bottom: 1rem;
-}
+  .post-header {
+    margin-bottom: 1rem;
+  }
 
-.post-heading {
-  display: block;
-  font-family: serif;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
+  .post-heading {
+    display: block;
+    font-family: serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
 
-.post-author-container {
-  display: block;
-}
+  .post-author-container {
+    display: block;
+  }
 
-.post-author-photo {
-  width: 2rem;
-  height: 2rem;
-  margin-right: 0.25em;
-  border-radius: 50%;
-}
+  .post-author-photo {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.25em;
+    border-radius: 50%;
+  }
 
-.post-author-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--accent-color);
-}
+  .post-author-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+  }
 
-.post-date {
-  display: block;
-  color: gray;
-  font-size: 0.9rem;
-  font-style: italic;
-}
+  .post-date {
+    display: block;
+    color: gray;
+    font-size: 0.9rem;
+    font-style: italic;
+  }
 
-.post-image {
-  display: block;
-  width: 100%;
-  margin: 1rem 0;
-}
+  .post-image {
+    display: block;
+    width: 100%;
+    margin: 1rem 0;
+  }
 
-.post-edit-button {
-  display: inline-block;
-  color: white;
-  background-color: rgb(100,100,100);
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  margin: 0.5rem 0;
-  border: none;
-}
+  .post-edit-button {
+    display: inline-block;
+    color: white;
+    background-color: rgb(100,100,100);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    border: none;
+  }
 
-.post-edit-button:hover {
-  background-color: rgb(75,75,75);
-}
+  .post-edit-button:hover {
+    background-color: rgb(75,75,75);
+  }
 
-.post-body {
-  color: black;
-  font-size: 1rem;
+  .post-body {
+    color: black;
+    font-size: 1rem;
+  }
 }

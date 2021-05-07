@@ -1,11 +1,11 @@
-        <section id="post-<%- post.post_id %>" class="post-section">
-          <span class="post-heading"><%- post.heading %></span
-          ><img class="post-image" src="<%- post.post_photo_url %>" /
-          ><div class="post-author-container">
-            <img class="post-author-photo" src="<%- post.user_photo_url %>" /
-            ><a class="post-author-name" href="/users/<%- post.author_id %>"><%- post.first_name+' '+post.last_name %></a>
+        <section id="post-<%- post.post_id %>" class="post-preview">
+          <span class="post-preview-heading"><%- post.heading %></span
+          ><img class="post-preview-image" src="<%- post.post_photo_url %>" /
+          ><div class="post-preview-author-container">
+            <img class="post-preview-author-photo" src="<%- post.user_photo_url %>" /
+            ><a class="post-preview-author-name" href="/users/<%- post.author_id %>"><%- post.first_name+' '+post.last_name %></a>
           </div
-          ><span class="post-date"><%- post.post_date %></span
-          ><p class="post-body"><%- post.body %></p
-          ><a class="post-continue-reading-button" href="/posts/<%- post.post_id %>">Continue Reading</a>
+          ><span class="post-preview-date"><%- post.post_date %></span
+          ><p class="post-preview-body"><%- post.body %></p
+          ><a class="post-preview-continue-reading-button" href="/posts/<%- post.post_id %>">Continue Reading</a>
         </section>

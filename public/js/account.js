@@ -28,20 +28,20 @@
 
   const displayDialogBeforeSubmit = function(displayBoolean) {
     //Find the dialog box
-    const dialogContainer = document.getElementsByClassName("dialog-container")[0];
+    const modal = document.getElementsByClassName("modal")[0];
     //Either hide or display the form
     if (displayBoolean) {
       const form = document.getElementsByClassName("account-form")[0];
-      const okButton = document.getElementsByClassName("dialog-ok-button")[0];
-      const cancelButton = document.getElementsByClassName("dialog-cancel-button")[0];
+      const okButton = document.getElementsByClassName("modal-dialog-ok-button")[0];
+      const cancelButton = document.getElementsByClassName("modal-dialog-cancel-button")[0];
 
-      dialogContainer.style.display = "block";
+      modal.style.display = "block";
 
       okButton.addEventListener("click", (event)=>{form.submit();})
-      cancelButton.addEventListener("click", (event)=>{dialogContainer.style.display = "none";})
+      cancelButton.addEventListener("click", (event)=>{modal.style.display = "none";})
     }
     else {
-      dialogContainer.style.display = "none";
+      modal.style.display = "none";
     }
   };
 

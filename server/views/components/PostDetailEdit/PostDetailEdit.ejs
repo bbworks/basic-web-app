@@ -1,0 +1,22 @@
+      <section id="post-<%- post.post_id %>" class="post-edit">
+        <form class="post-form" method="POST">
+          <div class="post-header">
+            <div class="post-heading-container">
+              <!-- <h3 id="post-heading-input" class="post-input" type="text" name="heading"><%- post.heading %></h3> -->
+              <input id="post-heading-input" class="post-input" type="text" name="heading" value="<%- post.heading %>" readonly/>
+              <button class="post-edit-button fas fa-edit" type="button" data-input-id="post-heading-input"></button>
+            </div>
+            <div class="post-author-container">
+              <img class="post-author-photo" src="<%- post.user_photo_url %>" /
+              ><span class="post-author-name"><%- post.first_name+' '+post.last_name %></span>
+            </div
+            ><span class="post-date"><%- post.post_date %></span>
+          </div>
+          <img class="post-image" src="<%- post.post_photo_url %>" />
+          <textarea id="post-body-input" class="post-input" name="body"><%- post.body %></textarea>
+          <div class="post-form-footer">
+            <button class="post-form-button post-save-button" type="submit">Save</button>
+            <button class="post-form-button post-cancel-button" type="button" onclick="window.history.back();">Cancel</button>
+          </div>
+        </form>
+      </section>
