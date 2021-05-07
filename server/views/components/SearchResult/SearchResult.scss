@@ -1,37 +1,31 @@
 .post-section {
+  display: block;
   position: relative;
   width: 100%;
-  height: 60vw;
+  height: 35vw;
   overflow-y: hidden;
+  color: unset;
 }
 
 .post-image {
-  float: left;
-  width: 60%;
+  float: right;
+  width: 30%;
   max-height: 60%;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .post-heading {
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: normal;
   white-space: nowrap;
   overflow-x: auto;
-  margin-bottom: 0.5em;
-}
-
-.post-date {
-  display: block;
-  color: gray;
-  font-size: 0.6rem;
-  font-style: italic;
-  text-align: right;
-  margin-bottom: 0.5rem;
+  color: var(--accent-color);
 }
 
 .post-author-container {
-  text-align: right;
+
 }
 
 .post-author-photo {
@@ -42,14 +36,21 @@
 }
 
 .post-author-name {
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: bold;
-  color: var(--accent-color);
+}
+
+.post-date {
+  display: block;
+  color: gray;
+  font-size: 0.6rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
 }
 
 .post-body {
   color: gray;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 
 .post-body-see-more-button {

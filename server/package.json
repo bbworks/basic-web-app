@@ -9,9 +9,10 @@
     "check:database-service": "powershell.exe -Command \"Get-Service MySQL8.0.21 | Format-List -Property Name, DisplayName, Status, StartType\"",
     "init:database": "powershell.exe -Command \".\\mysql\\BasicApp.ps1\"",
     "start:server": "nodemon ./app.js",
+    "clean:css": "del-cli \"../public/css/*\" --force",
     "build:sass": "sass views/components/:../public/css/components/ views/routes/:../public/css/routes/ scss/:../public/css/",
     "concatenate:css": "gulp concatenate-css",
-    "compile:css": "npm run build:sass & npm run concatenate:css",
+    "compile:css": "npm run clean:css & npm run build:sass & npm run concatenate:css",
     "watch:sass": "onchange \"views/**/*.scss\" \"scss/*.scss\" -- npm run compile:css",
     "watch": "npm run watch:sass",
     "start": "npm run start:database-service & concurrently \"npm run start:server\" \"npm run watch\" --kill-others"

@@ -1,0 +1,22 @@
+      <form class="account-form" method="POST">
+        <section class="top-section">
+        	<img class="user-photo" src="<%- user.user_photo_url %>" />
+          <div class="user-name-container">
+            <input id="user-first-name-input" class="user-account-input user-account-first-name-input" type="text" name="firstName" value="<%- user.first_name %>" /
+            ><input id="user-last-name-input" class="user-account-input user-account-last-name-input" type="text" name="lastName" value="<%- user.last_name %>" />
+          </div>
+        </section>
+        <input id="user-email-address-input" class="user-account-input" type="text" name="emailAddress" value="<%- user.email_address %>" />
+        <label class="user-account-label" for="user-email-address-input">Email Address</label>
+        <input id="user-phone-number-input" class="user-account-input" type="text" name="phoneNumber" value="<%- user.phone_number %>" />
+        <label class="user-account-label" for="user-phone-number-input">Phone Number</label>
+        <div class="user-account-footer">
+          <button class="user-account-button user-account-save-button" type="button">Save</button>
+          <button class="user-account-button post-cancel-button" type="button" onclick="window.history.back();">Cancel</button>
+        </div>
+        <%- include ("../../components/Modal/Modal", {
+    			text: "Are you sure you want to save?",
+          okButton: "Save",
+          cancelButton: "Cancel"
+    		}) %>
+      </form>

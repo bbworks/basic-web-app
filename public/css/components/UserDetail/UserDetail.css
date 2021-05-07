@@ -1,0 +1,40 @@
+.user-section {
+  width: 100%;
+}
+
+.user-name {
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+}
+
+.user-photo {
+  display: block;
+  width: 18rem;
+  height: 18rem;
+  margin: 0 auto;
+  border: 0.5rem solid var(--accent-color);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  margin-bottom: 2rem;
+}
+
+.user-profile-edit-button {
+  display: inline-block;
+  color: white;
+  background-color: #646464;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  border: none;
+}
+
+.user-profile-edit-button:hover {
+  background-color: #4b4b4b;
+}
+
+/*# sourceMappingURL=UserDetail.css.map */
