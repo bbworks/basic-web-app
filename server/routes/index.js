@@ -1,7 +1,7 @@
 //Import modules
 const router = require("express").Router();
 const {postAPI} = require("../api/index.js");
-const utilities = require("../utilities");
+const {truncatePost, formatDateString, renderView} = require("../utilities.js");
 
 
 router.get("/", (request, response) => {
@@ -9,11 +9,11 @@ router.get("/", (request, response) => {
     .then(results=>{
       //Truncate the post body and format our date
       results.forEach(result=>{
-        result.body = utilities.truncatePost(result.body);
-        result.post_date = utilities.formatDateString(result.post_date);
+        result.body = truncatePost(result.body);
+        result.post_date = formatDateString(result.post_date);
       });
 
-      response.render("routes/index/index.ejs", {posts: results});
+      renderView(request, response, "routes/index/index.ejs", {posts: results});
     });
 });
 

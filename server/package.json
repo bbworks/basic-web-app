@@ -14,7 +14,11 @@
     "concatenate:css": "gulp concatenate-css",
     "compile:css": "npm run clean:css & npm run build:sass & npm run concatenate:css",
     "watch:sass": "onchange \"views/**/*.scss\" \"scss/*.scss\" -- npm run compile:css",
-    "watch": "npm run watch:sass",
+    "clean:js": "del-cli \"../public/js/*\" --force",
+    "copy:js": "copyfiles \"views/**/*.js\" \"../public/js\" --up 1",
+    "compile:js": "npm run clean:js & npm run copy:js",
+    "watch:js": "onchange \"views/**/*.js\" -- npm run compile:js",
+    "watch": "concurrently \"npm run watch:sass\" \"npm run watch:js\" --kill-others",
     "start": "npm run start:database-service & concurrently \"npm run start:server\" \"npm run watch\" --kill-others"
   },
   "author": "Bradley Biera",
@@ -27,6 +31,8 @@
   },
   "devDependencies": {
     "concurrently": "^6.0.2",
+    "copyfiles": "^2.4.1",
+    "del-cli": "^3.0.1",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-cli": "^2.3.0",

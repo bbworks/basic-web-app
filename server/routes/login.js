@@ -1,11 +1,12 @@
 //Import modules
 const router = require("express").Router();
 const {authenticationAPI} = require("../api/index.js");
+const {renderView} = require("../utilities.js");
 
 let failedAttempt = false;
 
 router.get("/", (request, response)=>{
-  response.render("routes/login/login.ejs", {failure: failedAttempt});
+  renderView(request, response, "routes/login/login.ejs", {failure: failedAttempt});
   failedAttempt = false;
 });
 

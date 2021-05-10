@@ -1,7 +1,7 @@
 //Import modules
 const router = require("express").Router();
 const {userAPI} = require("../api/index.js");
-const utilities = require("../utilities");
+const {truncatePost, formatDateString, renderView} = require("../utilities.js");
 
 router.get("/:user_id", async (request, response)=>{
   try {
@@ -15,13 +15,13 @@ router.get("/:user_id", async (request, response)=>{
     //Truncate the post body and format our date
     const posts = postsResults.map(post=>{return {
         ...post,
-        body: utilities.truncatePost(post.body, 150),
-        post_date: utilities.formatDateString(post.post_date),
+        body: truncatePost(post.body, 150),
+        post_date: formatDateString(post.post_date),
       };
     });
 
     //Send the response
-    response.render("routes/users/users.ejs", {user, posts, sessionUser});
+    renderView(request, response, "routes/users/users.ejs", {user, posts, sessionUser});
   }
   catch (err) {
     response.status(500).send(err);

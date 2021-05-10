@@ -1,10 +1,11 @@
 //Import modules
 const router = require("express").Router();
+const {renderView} = require("../utilities.js");
 
 router.get("/", (request, response) => {
   try {
     //Send the response
-    response.render("routes/stuff/stuff.ejs");
+    renderView(request, response, "routes/stuff/stuff.ejs");
   }
   catch (err) {
     response.status(500).send(err);

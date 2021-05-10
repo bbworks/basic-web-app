@@ -1,7 +1,7 @@
 //Import modules
 const router = require("express").Router();
 const {postAPI, authenticationAPI} = require("../api/index.js");
-const utilities = require("../utilities");
+const {truncatePost, formatDateString, renderView} = require("../utilities.js");
 
 
 router.get("/search", async (request, response) => {
@@ -15,13 +15,13 @@ router.get("/search", async (request, response) => {
     //Massage the posts data
     const posts = results.map(post=>{return {
         ...post,
-        body: utilities.truncatePost(post.body, 225),
-        post_date: utilities.formatDateString(post.post_date),
+        body: truncatePost(post.body, 225),
+        post_date: formatDateString(post.post_date),
       };
     });
 
     //Send the response
-    response.render("routes/search/search.ejs", {posts, search});
+    renderView(request, response, "routes/search/search.ejs", {posts, search});
   }
   catch (err) {
     response.status(500).send(err);
@@ -39,11 +39,11 @@ router.get("/:post_id", async (request, response)=>{
     //Massage the data
     const post = {
       ...results,
-      post_date: utilities.formatDateString(results.post_date)
+      post_date: formatDateString(results.post_date)
     };
 
     //Send the response
-    response.render("routes/posts/posts.ejs", {post, sessionUser});
+    renderView(request, response, "routes/posts/posts.ejs", {post, sessionUser});
   }
   catch (err) {
     response.status(500).send(err);
@@ -59,7 +59,7 @@ router.get("/:post_id/edit", authenticationAPI.checkAuthentication, async (reque
     const post = await postAPI.getPost(postId);
 
     //Send the response
-    response.render("routes/post_edit/post_edit.ejs", {post, pageUrl: `/posts/${postId}`});
+    renderView(request, response, "routes/post_edit/post_edit.ejs", {post});
   }
   catch (err) {
     response.status(500).send(err);

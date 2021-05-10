@@ -29,4 +29,57 @@ api.formatDateString = function(dateString) {
   return `${month[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
 };
 
+api.renderView = function(request, response, viewRelativePath, locals) {
+  //Import modules
+  const path = require("path");
+  const fs = require("fs");
+
+  //Declare functions
+  const getScripts = function(viewRelativePath) {
+    const viewParentRelativePath = path.dirname(viewRelativePath);
+    const viewAbsoluteDirectory = path.dirname(path.join(global.viewDirectory, viewRelativePath));
+
+    return fs
+      .readdirSync(viewAbsoluteDirectory)
+      .filter(file=>file.match(/\.js$/))
+      .map(file=>path.join(viewParentRelativePath, file));
+  };
+
+  const getScriptsRecursively = function(viewRelativePath) {
+    //Get a path-ized relative path
+    viewRelativePath = path.normalize(viewRelativePath);
+
+    //Get the absolute path
+    const viewAbsolutePath = path.join(global.viewDirectory, viewRelativePath);
+
+    //Get this page view's scripts
+    let scripts = getScripts(viewRelativePath);
+
+    //Get the unique list (Set) of included component relative paths inside the file
+    const includedComponents = [...new Set(
+      fs
+        .readFileSync(viewAbsolutePath, "utf8")
+        .match(/(?<=include\s*\(").+(?=")/g)
+      )
+    ];
+
+    //Recurse through the component tree, getting scripts for all components
+    if (includedComponents.length) {
+      const includedComponentsRelativePath = includedComponents.map(componentRelativePath=>path.join(path.dirname(viewRelativePath), componentRelativePath));
+      scripts = [...scripts, ...includedComponentsRelativePath.reduce((accumulator, includedComponentRelativePath)=>accumulator = [...accumulator, ...getScripts(includedComponentRelativePath)], scripts)];
+    }
+
+    console.log([...new Set(scripts)]);
+
+    //Return the unique set of components
+    return [...new Set(scripts)];
+  };
+
+  //Call the Response.render
+  return response.render(viewRelativePath, {
+    scripts: getScriptsRecursively(viewRelativePath),
+    ...locals,
+  });
+};
+
 module.exports = api;

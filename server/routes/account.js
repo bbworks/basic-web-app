@@ -1,14 +1,13 @@
 //Import modules
 const router = require("express").Router();
 const {userAPI, authenticationAPI} = require("../api/index.js");
+const {renderView} = require("../utilities.js");
 
 router.get("/", authenticationAPI.checkAuthentication, (request, response) => {
   userAPI.getUser(request.session.user.userId)
     .then(results=>{
       const user = results;
-      console.log(require("fs").readdirSync(__dirname));
-      console.log(global);
-      response.render("routes/account/account.ejs", {user: user});
+      renderView(request, response, "routes/account/account.ejs", {user: user});
     });
 });
 

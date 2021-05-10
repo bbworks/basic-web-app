@@ -1,5 +1,6 @@
 //Import modules
 const router = require("express").Router();
+const {renderView} = require("../utilities.js");
 
 router.get("/", (request, response)=>{
   try {

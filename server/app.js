@@ -9,17 +9,22 @@ const router = require("./routes/router.js");
 
 const db = require("./db.js");
 
+//Set global variables
+global.rootDirectory = __dirname;
+global.publicDirectory = path.join(global.rootDirectory, "../public/");
+global.viewDirectory = path.join(global.rootDirectory, "views/");
+
 //Create and configure the app
 const app = express();
 const port = 3000;
-const publicDirectory = path.join(__dirname, "../public/");
+const publicDirectory = global.publicDirectory;
 
 //Set up the initial database connection
 db.init();
 
 //Set the application view engine (for page rendering)
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views/"));
+app.set("views", global.viewDirectory);
 
 //Set up application middleware
 
