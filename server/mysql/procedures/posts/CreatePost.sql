@@ -13,7 +13,7 @@ CREATE PROCEDURE CreatePost(
 )
 BEGIN
 	# Declare default values
-    IF NULLIF(TRIM($photo_url), '') IS NULL THEN SET $photo_url = '/assets/post_photo_default.jpg'; END IF;
+    IF NULLIF(TRIM($photo_url), '') IS NULL THEN SET $photo_url = '/img/post_photo_default.jpg'; END IF;
     IF NULLIF(TRIM($post_date), '') IS NULL THEN SET $post_date = NOW(); END IF;
     
 	INSERT INTO posts(

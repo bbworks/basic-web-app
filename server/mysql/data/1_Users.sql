@@ -35,7 +35,7 @@ VALUES (
 	, 'Biera'
 	, '30395710+bbworks@users.noreply.github.com'
 	, '5555555555'
-	, '/assets/466410_4783174939615_1618313192_o.jpg'
+	, '/img/466410_4783174939615_1618313192_o.jpg'
 );
 
 COMMIT;

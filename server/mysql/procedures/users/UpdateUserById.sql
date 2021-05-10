@@ -29,7 +29,7 @@ BEGIN
 		, email_address = COALESCE(NULLIF(TRIM($email_address), ''), email_address)
 		, phone_number = COALESCE(NULLIF(TRIM($phone_number), ''), phone_number)
         , username = COALESCE(NULLIF(TRIM($username), ''), username)
-        , user_photo_url = COALESCE(NULLIF(TRIM($photo_url), ''), user_photo_url, '/assets/user_photo_default.jpg')
+        , user_photo_url = COALESCE(NULLIF(TRIM($photo_url), ''), user_photo_url, '/img/user_photo_default.jpg')
 	WHERE user_id = $user_id;
 
   SELECT

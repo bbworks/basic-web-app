@@ -9,16 +9,24 @@
     "check:database-service": "powershell.exe -Command \"Get-Service MySQL8.0.21 | Format-List -Property Name, DisplayName, Status, StartType\"",
     "init:database": "powershell.exe -Command \".\\mysql\\BasicApp.ps1\"",
     "start:server": "nodemon ./app.js",
+
     "clean:css": "del-cli \"../public/css/*\" --force",
-    "build:sass": "sass views/components/:../public/css/components/ views/routes/:../public/css/routes/ scss/:../public/css/",
+    "build:sass": "sass views/components/:../public/css/components/ views/routes/:../public/css/routes/ static/scss/:../public/css/",
     "concatenate:css": "gulp concatenate-css",
     "compile:css": "npm run clean:css & npm run build:sass & npm run concatenate:css",
-    "watch:sass": "onchange \"views/**/*.scss\" \"scss/*.scss\" -- npm run compile:css",
+    "watch:sass": "onchange \"views/**/*.scss\" \"static/scss/*.scss\" -- npm run compile:css",
+
     "clean:js": "del-cli \"../public/js/*\" --force",
     "copy:js": "copyfiles \"views/**/*.js\" \"../public/js\" --up 1",
     "compile:js": "npm run clean:js & npm run copy:js",
     "watch:js": "onchange \"views/**/*.js\" -- npm run compile:js",
-    "watch": "concurrently \"npm run watch:sass\" \"npm run watch:js\" --kill-others",
+
+    "clean:img": "del-cli \"../public/img/*\" --force",
+    "copy:img": "copyfiles \"views/**/*.png\" \"views/**/*.jpeg\" \"views/**/*.jpg\" \"views/**/*.gif\" \"views/**/*.svg\" \"views/**/*.ico\" \"static/img/*.png\" \"static/img/*.jpeg\" \"static/img/*.jpg\" \"static/img/*.gif\" \"static/img/*.svg\" \"static/img/*.ico\" \"../public/img\" --flat",
+    "compile:img": "npm run clean:img & npm run copy:img",
+    "watch:img": "onchange \"views/**/*.png\" \"views/**/*.jpeg\" \"views/**/*.jpg\" \"views/**/*.gif\" \"views/**/*.svg\" \"views/**/*.ico\" \"static/img/*.png\" \"static/img/*.jpeg\" \"static/img/*.jpg\" \"static/img/*.gif\" \"img/*.svg\" \"static/img/*.ico\" -- npm run compile:img",
+
+    "watch": "concurrently \"npm run watch:sass\" \"npm run watch:js\" \"npm run watch:img\" --kill-others",
     "start": "npm run start:database-service & concurrently \"npm run start:server\" \"npm run watch\" --kill-others"
   },
   "author": "Bradley Biera",

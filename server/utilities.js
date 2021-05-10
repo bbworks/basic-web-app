@@ -69,8 +69,6 @@ api.renderView = function(request, response, viewRelativePath, locals) {
       scripts = [...scripts, ...includedComponentsRelativePath.reduce((accumulator, includedComponentRelativePath)=>accumulator = [...accumulator, ...getScripts(includedComponentRelativePath)], scripts)];
     }
 
-    console.log([...new Set(scripts)]);
-
     //Return the unique set of components
     return [...new Set(scripts)];
   };

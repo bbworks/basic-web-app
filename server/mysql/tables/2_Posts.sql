@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `Posts` (
     , `heading` varchar(100) NOT NULL
     , `body` text NOT NULL
     , `author_id` int NOT NULL
-    , `post_photo_url` varchar(1000) NULL DEFAULT '/assets/post_photo_default.jpg'
+    , `post_photo_url` varchar(1000) NULL DEFAULT '/img/post_photo_default.jpg'
     , PRIMARY KEY (`post_id`)
     , CONSTRAINT `FK_author_id` FOREIGN KEY (`author_id`) REFERENCES `users`(`user_id`)
 );

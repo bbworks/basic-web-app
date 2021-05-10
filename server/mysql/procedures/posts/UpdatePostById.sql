@@ -23,7 +23,7 @@ BEGIN
 		post_date = COALESCE(NULLIF(TRIM($post_date), ''), post_date)
         , heading = COALESCE(NULLIF(TRIM($heading), ''), heading)
 		, body = COALESCE(NULLIF(TRIM($body), ''), body)
-		, post_photo_url = COALESCE(NULLIF(TRIM($photo_url), ''), post_photo_url, '/assets/post_photo_default.jpg')
+		, post_photo_url = COALESCE(NULLIF(TRIM($photo_url), ''), post_photo_url, '/img/post_photo_default.jpg')
 		, author_id = COALESCE(NULLIF(TRIM($author_id), ''), author_id)
 	WHERE post_id = $post_id;
 	SELECT

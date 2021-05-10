@@ -15,7 +15,7 @@ CREATE PROCEDURE CreateUser(
 )
 BEGIN
 	# Declare default values
-    IF NULLIF(TRIM($photo_url), '') IS NULL THEN SET $photo_url = '/assets/user_photo_default.jpg'; END IF;
+    IF NULLIF(TRIM($photo_url), '') IS NULL THEN SET $photo_url = '/img/user_photo_default.jpg'; END IF;
     
 	INSERT INTO users(
 		username
