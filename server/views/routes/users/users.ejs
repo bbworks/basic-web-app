@@ -1,5 +1,5 @@
 <html>
-    <%- include ("../../partials/head", {
+    <%- include ("../../partials/head.ejs", {
       meta: {
         title: "App | Users",
         description: "This is my app.",
@@ -7,16 +7,16 @@
       },
     }) %>
   <body>
-    <%- include ("../../components/Header/Header") %>
+    <%- include ("../../components/Header/Header.ejs") %>
     <main id="content" class="content">
-      <%- include ("../../components/UserDetail/UserDetail", {
+      <%- include ("../../components/UserDetail/UserDetail.ejs", {
   			user: user,
         posts: posts,
         sessionUser: sessionUser,
   		}) %>
       </div>
     </main>
-    <%- include ("../../components/Footer/Footer", {
+    <%- include ("../../components/Footer/Footer.ejs", {
 			currentPage: "home",
 		}) %>
     <%- include("../../partials/script.ejs", {

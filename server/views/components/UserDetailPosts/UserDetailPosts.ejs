@@ -2,7 +2,7 @@
         <h2 class="user-post-container-heading">Posts by <%- user.first_name %></h2>
         <div class="user-post-container">
           <% posts.forEach(post=>{ %>
-            <%- include ("../../components/UserDetailPost/UserDetailPost", {
+            <%- include ("../../components/UserDetailPost/UserDetailPost.ejs", {
         			user: user,
               post: post,
         		}) %>

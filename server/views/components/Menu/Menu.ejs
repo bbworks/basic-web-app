@@ -1,11 +1,11 @@
       <div class="menu">
         <% if(user) { %>
-          <%- include ("../UserProfileMenuItem/UserProfileMenuItem", {
+          <%- include ("../UserProfileMenuItem/UserProfileMenuItem.ejs", {
             user: user,
           }) %>
         <% } %>
         <% for(const menuItem of menuItems) { %>
-        <%- include ("../MenuItem/MenuItem", {
+        <%- include ("../MenuItem/MenuItem.ejs", {
           menuItem: menuItem,
         }) %>
         <% }; %>

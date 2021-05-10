@@ -1,5 +1,5 @@
 <html>
-    <%- include ("../../partials/head", {
+    <%- include ("../../partials/head.ejs", {
       meta: {
         title: "App | Home",
         description: "This is my app.",
@@ -7,14 +7,14 @@
       },
     }) %>
   <body>
-    <%- include ("../../components/Header/Header") %>
+    <%- include ("../../components/Header/Header.ejs") %>
     <main id="content" class="content">
-      <%- include ("../../components/SearchBar/SearchBar", {
+      <%- include ("../../components/SearchBar/SearchBar.ejs", {
         search: null,
       }) %>
-      <%- include ("../../components/PostsPreview/PostsPreview") %>
+      <%- include ("../../components/PostsPreview/PostsPreview.ejs") %>
     </main>
-    <%- include ("../../components/Footer/Footer", {
+    <%- include ("../../components/Footer/Footer.ejs", {
       currentPage: "home",
     }) %>
     <%- include("../../partials/script.ejs", {

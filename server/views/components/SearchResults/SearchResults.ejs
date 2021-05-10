@@ -3,7 +3,7 @@
           <h2 class="page-title">Search</h2>
         </section>
         <% posts.forEach(post=>{ %>
-          <%- include ("../SearchResult/SearchResult", {
+          <%- include ("../SearchResult/SearchResult.ejs", {
             post: post,
           }) %>
           <% if (posts.indexOf(post) < posts.length-1) { %>

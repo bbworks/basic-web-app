@@ -6,7 +6,7 @@
       <% if (sessionUser && sessionUser.userId === user.user_id) { %>
         <button class="user-profile-edit-button" onclick="">Edit Profile</button>
       <% } %>
-      <%- include ("../../components/UserDetailPosts/UserDetailPosts", {
+      <%- include ("../../components/UserDetailPosts/UserDetailPosts.ejs", {
   			user: user,
         posts: posts,
   		}) %>

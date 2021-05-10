@@ -1,7 +1,7 @@
         <div class="posts-preview">
           <h3 class="posts-preview-heading">Posts</h3>
           <% posts.map((post, index) => { %>
-            <%- include ("../PostPreview/PostPreview", {
+            <%- include ("../PostPreview/PostPreview.ejs", {
               post: post
             }) %>
             <% if (index < posts.length-1) { %>
