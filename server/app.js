@@ -11,7 +11,7 @@ const db = require("./db.js");
 
 //Set global variables
 global.rootDirectory = __dirname;
-global.publicDirectory = path.join(global.rootDirectory, "../public/");
+global.publicDirectory = path.join(global.rootDirectory, "../build/");
 global.viewDirectory = path.join(global.rootDirectory, "views/");
 
 //Create and configure the app
