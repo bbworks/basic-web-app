@@ -9,9 +9,6 @@
   <body>
     <%- include ("../../components/Header/Header.ejs") %>
     <main id="content" class="content">
-      <%- include ("../../components/SearchBar/SearchBar.ejs", {
-        search: search,
-      }) %>
       <%- include ("../../components/SearchResults/SearchResults.ejs", {
         posts: posts,
       }) %>

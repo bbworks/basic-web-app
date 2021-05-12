@@ -1,12 +1,29 @@
 .search-bar {
-  .search-form {
-    width: 100%;
-    padding-bottom: 0.5em;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    margin-bottom: 0.5em;
+  .search-bar-form {
+    display: flex;
+    align-items: center;
   }
 
-  .search-input {
-    width: 80%;
+  .search-bar-input {
+    width: 0;
+    padding: 0;
+    border: none;
+    border-radius: 1rem;
+    transition: width 0.5s;
+  }
+
+  .search-bar-submit {
+    background: none;
+  }
+
+  .search-bar-submit-icon {
+    font-size: 1.25rem;
+  }
+
+  &.search {
+    .search-bar-input {
+      width: 10rem;
+      padding: 0.25rem 1rem;
+    }
   }
 }

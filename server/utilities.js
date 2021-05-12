@@ -76,6 +76,7 @@ api.renderView = function(request, response, viewRelativePath, locals) {
   //Call the Response.render
   return response.render(viewRelativePath, {
     scripts: getScriptsRecursively(viewRelativePath),
+    search: null, //default "search" to null, and overwrite if applicable
     ...locals,
   });
 };
