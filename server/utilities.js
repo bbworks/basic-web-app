@@ -66,7 +66,6 @@ api.renderView = function(request, response, viewRelativePath, locals) {
     //Recurse through the component tree, getting scripts for all components
     if (includedComponents.length) {
       const includedComponentsRelativePath = includedComponents.map(componentRelativePath=>path.join(path.dirname(viewRelativePath), componentRelativePath));
-      scripts = [...scripts, ...includedComponentsRelativePath.reduce((accumulator, includedComponentRelativePath)=>accumulator = [...accumulator, ...getScripts(includedComponentRelativePath)], scripts)];
       scripts = [...scripts, ...includedComponentsRelativePath.reduce((accumulator, includedComponentRelativePath)=>accumulator = [...accumulator, ...getScriptsRecursively(includedComponentRelativePath)], scripts)];
     }
 
