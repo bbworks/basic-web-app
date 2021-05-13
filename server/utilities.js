@@ -77,6 +77,13 @@ api.renderView = function(request, response, viewRelativePath, locals) {
   return response.render(viewRelativePath, {
     scripts: getScriptsRecursively(viewRelativePath),
     search: null, //default "search" to null, and overwrite if applicable
+    sessionUser: request.session.user || {
+      userId: null,
+      username: null,
+      firstName: null,
+      lastName: null,
+      photoUrl: "/img/user_photo_default.jpg",
+    },
     ...locals,
   });
 };

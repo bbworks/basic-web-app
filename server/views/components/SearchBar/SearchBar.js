@@ -28,6 +28,9 @@
       //Put the search bar into "search" view
       searchBar.classList.add("search");
 
+      //Focus on the .search-bar-input
+      searchBarInput.focus();
+
       //Add an event listener to close "search" view if
       // something else is clicked
       const handleSearchBarOnBlur = (event) => {

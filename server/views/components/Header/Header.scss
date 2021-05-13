@@ -12,20 +12,34 @@
     padding: 0.25rem 1rem;
   }
 
-  .header-section {
-    display: inline-block;
+  &-section-right {
+    display: flex;
+    align-items: center;
   }
 
-  .header-logo-link {
+  &-logo-link {
     display: block;
     width: 5rem;
     height: 3rem;
   }
 
-  .header-logo {
+  &-logo {
     width: 100%;
     height: 100%;
     object-position: center;
     object-fit: cover;
+  }
+
+  &-account {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.25rem;
+  }
+
+  &-account-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
   }
 }
