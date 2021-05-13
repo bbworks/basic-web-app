@@ -1,6 +1,7 @@
-<nav class="navbar<%-navClasses-%>">
-  <a class="navbar-button<%-navItemClasses-%><% if(currentPage === "home") { %> current<% } %>" href="/"><i class="navbar-icon fas fa-home"></i><span class="navbar-name">Home</span></a
-  ><a class="navbar-button<%-navItemClasses-%><% if(currentPage === "stuff") { %> current<% } %>" href="/stuff"><i class="navbar-icon fas fa-box-open"></i><span class="navbar-name">Stuff</span></a
-  ><a class="navbar-button<%-navItemClasses-%><% if(currentPage === "notifications") { %> current<% } %>" href="/notifications"><i class="navbar-icon fas fa-bell"></i><span class="navbar-name">Notifications</span></a
-  ><a class="navbar-button<%-navItemClasses-%><% if(currentPage === "menu") { %> current<% } %>" href="/menu"><i class="navbar-icon fas fa-bars"></i><span class="navbar-name">Menu</span></a>
+<% const navbar = {home: {text: "Home", href: "/", iconClass: "fas fa-home"}, stuff: {text: "Stuff", href: "/stuff", iconClass: "fas fa-box-open"}, notifications: {text: "Notifications", href: "/notifications", iconClass: "fas fa-bell"}, menu: {text: "Menu", href: "/menu", iconClass: "fas fa-bars"},}; %>
+<nav class="navbar <%-navbarClasses-%>">
+<% for(const itemName in navbar) { %>
+  <% const {text, href, iconClass} = navbar[itemName]; %>
+  <a class="navbar-button <%-navbarItemClasses-%><% if(currentPage === itemName) { %> current<% } %>" href="<%- href %>"><i class="navbar-icon <%- iconClass %>"></i><span class="navbar-name"><%- text %></span></a>
+<% } %>
 </nav>
